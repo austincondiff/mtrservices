@@ -40,6 +40,8 @@ const onLogin = async () => {
   const token = localStorage.getItem('tinacms-github-token') || null
   const headers = new Headers()
 
+  console.log('ON LOGIN')
+
   if (token) {
     headers.append('Authorization', 'Bearer ' + token)
   }
