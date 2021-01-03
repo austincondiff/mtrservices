@@ -1,15 +1,39 @@
-import '@styles/globals.css'
-import { withTina } from 'tinacms'
-import { GithubClient, TinacmsGithubProvider, GithubMediaStore } from 'react-tinacms-github'
-import { MarkdownFieldPlugin } from 'react-tinacms-editor'
+import App from 'next/app'
+import { TinaCMS, TinaProvider } from 'tinacms'
+import { GithubClient, GithubMediaStore, TinacmsGithubProvider } from 'react-tinacms-github'
 
-const github = new GithubClient({
-  proxy: '/api/proxy-github',
-  authCallbackRoute: '/api/create-github-access-token',
-  clientId: process.env.GITHUB_CLIENT_ID,
-  baseRepoFullName: process.env.REPO_FULL_NAME,
-  baseBranch: process.env.BASE_BRANCH,
-})
+export default class Site extends App {
+  constructor(props) {
+    super(props)
+
+    const github = new GithubClient({
+      proxy: '/api/proxy-github',
+      authCallbackRoute: '/api/create-github-access-token',
+      clientId: process.env.GITHUB_CLIENT_ID,
+      baseRepoFullName: process.env.REPO_FULL_NAME, // e.g: tinacms/tinacms.org,
+    })
+
+    this.cms = new TinaCMS({
+      enabled: !!props.pageProps.preview,
+      apis: { github },
+      media: new GithubMediaStore(github),
+      sidebar: props.pageProps.preview,
+      toolbar: props.pageProps.preview,
+    })
+  }
+
+  render() {
+    const { Component, pageProps } = this.props
+    return (
+      <TinaProvider cms={this.cms}>
+        <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>
+          <EditLink cms={this.cms} />
+          <Component {...pageProps} />
+        </TinacmsGithubProvider>
+      </TinaProvider>
+    )
+  }
+}
 
 const onLogin = async () => {
   const token = localStorage.getItem('tinacms-github-token') || null
@@ -32,19 +56,6 @@ const onLogout = () => {
   })
 }
 
-function Application({ Component, pageProps }) {
-  return (
-    <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>
-      <Component {...pageProps} />
-    </TinacmsGithubProvider>
-  )
+export const EditLink = ({ cms }) => {
+  return <button onClick={() => cms.toggle()}>{cms.enabled ? 'Exit Edit Mode' : 'Edit This Site'}</button>
 }
-
-export default withTina(Application, {
-  enabled: true,
-  sidebar: false,
-  toolbar: true,
-  plugins: [MarkdownFieldPlugin],
-  apis: { github },
-  media: new GithubMediaStore(github),
-})
