@@ -24,7 +24,7 @@ export default function Home({ file, preview }) {
     <div className="container">
       <Head>
         <title>{page.title}</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <InlineForm form={form}>
         <main>
