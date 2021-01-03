@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '.env.local' })
+require('dotenv')
 
 module.exports = {
   env: {
