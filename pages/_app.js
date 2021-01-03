@@ -1,10 +1,14 @@
 import App from 'next/app'
 import { TinaCMS, TinaProvider } from 'tinacms'
 import { GithubClient, GithubMediaStore, TinacmsGithubProvider } from 'react-tinacms-github'
+import isInBrowser from 'is-in-browser'
 
 export default class Site extends App {
   constructor(props) {
     super(props)
+
+    const [subdomain] = isInBrowser && window.location.hostname.split('.')
+    this.isAdmin = subdomain === 'admin' || subdomain === 'localhost'
 
     const github = new GithubClient({
       proxy: '/api/proxy-github',
@@ -15,11 +19,11 @@ export default class Site extends App {
     })
 
     this.cms = new TinaCMS({
-      enabled: !!props.pageProps.preview,
+      enabled: this.isAdmin && !!props.pageProps.preview,
       apis: { github },
       media: new GithubMediaStore(github),
-      sidebar: props.pageProps.preview,
-      toolbar: props.pageProps.preview,
+      sidebar: this.isAdmin && props.pageProps.preview,
+      toolbar: this.isAdmin && props.pageProps.preview,
     })
   }
 
