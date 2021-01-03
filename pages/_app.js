@@ -32,7 +32,7 @@ export default class Site extends App {
     return (
       <TinaProvider cms={this.cms}>
         <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>
-          <EditLink cms={this.cms} />
+          {this.isAdmin && <EditLink cms={this.cms} />}
           <Component {...pageProps} />
         </TinacmsGithubProvider>
       </TinaProvider>
