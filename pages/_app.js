@@ -7,7 +7,7 @@ export default class Site extends App {
   constructor(props) {
     super(props)
 
-    const [subdomain] = isInBrowser && window.location.hostname.split('.')
+    const [subdomain] = isInBrowser ? window.location.hostname?.split('.') : []
     this.isAdmin = subdomain === 'admin' || subdomain === 'localhost'
 
     const github = new GithubClient({
@@ -19,7 +19,7 @@ export default class Site extends App {
     })
 
     this.cms = new TinaCMS({
-      enabled: this.isAdmin && !!props.pageProps.preview,
+      enabled: !!this.isAdmin && !!props.pageProps.preview,
       apis: { github },
       media: new GithubMediaStore(github),
       sidebar: this.isAdmin && props.pageProps.preview,
