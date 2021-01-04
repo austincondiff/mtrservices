@@ -17,4 +17,4 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.  The page auto-updates as you edit project files.
+Open [http://localhost:3232](http://localhost:3232) with your browser to see the result.  The page auto-updates as you edit project files.
