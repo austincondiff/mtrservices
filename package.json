@@ -21,8 +21,5 @@
     "react-tinacms-inline": "^0.35.0",
     "styled-components": "^5.2.1",
     "tinacms": "^0.34.0"
-  },
-  "devDependencies": {
-    "hygen-next-tinacms-github": "https://github.com/dwalkr/hygen-next-tinacms-github"
   }
 }

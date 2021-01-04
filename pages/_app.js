@@ -2,13 +2,22 @@ import App from 'next/app'
 import { TinaCMS, TinaProvider } from 'tinacms'
 import { GithubClient, GithubMediaStore, TinacmsGithubProvider } from 'react-tinacms-github'
 import isInBrowser from 'is-in-browser'
+import GlobalStyles from '@styles/GlobalStyles'
 
 export default class Site extends App {
   constructor(props) {
     super(props)
 
     const [subdomain] = isInBrowser ? window.location.hostname?.split('.') : []
-    this.isAdmin = subdomain === 'admin' || subdomain === 'localhost'
+    this.isAdmin =
+      subdomain === 'admin' ||
+      subdomain === 'localhost' ||
+      props.host?.includes('admin') ||
+      props.host?.includes('localhost')
+
+    console.log({ props, isAdmin: this.isAdmin })
+
+    this.isEditing = !!this.isAdmin && !!props.pageProps.preview
 
     const github = new GithubClient({
       proxy: '/api/proxy-github',
@@ -19,11 +28,11 @@ export default class Site extends App {
     })
 
     this.cms = new TinaCMS({
-      enabled: !!this.isAdmin && !!props.pageProps.preview,
+      enabled: this.isEditing,
+      sidebar: this.isEditing,
+      toolbar: this.isEditing,
       apis: { github },
       media: new GithubMediaStore(github),
-      sidebar: this.isAdmin && props.pageProps.preview,
-      toolbar: this.isAdmin && props.pageProps.preview,
     })
   }
 
@@ -32,8 +41,9 @@ export default class Site extends App {
     return (
       <TinaProvider cms={this.cms}>
         <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>
+          <GlobalStyles />
           {this.isAdmin && <EditLink cms={this.cms} />}
-          <Component {...pageProps} />
+          <Component isEditing={this.isEditing} {...pageProps} />
         </TinacmsGithubProvider>
       </TinaProvider>
     )
