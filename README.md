@@ -2,10 +2,10 @@
 Website for [MTR Services](https://mtrservices.com/).
 
 ## Stack
-[React](https://reactjs.org/) - Frontent framework
-[Next.js](https://nextjs.org/) - React production framework
-[Vercel](https://vercel.com/) - Deployment and hosting
-[TinaCMS](https://tina.io/) - Content management system
+* [React](https://reactjs.org/) - Frontent framework
+* [Next.js](https://nextjs.org/) - React production framework
+* [Vercel](https://vercel.com/) - Deployment and hosting
+* [TinaCMS](https://tina.io/) - Content management system
 
 ## Getting Started
 
