@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { BlocksControls, InlineTextarea } from 'react-tinacms-inline'
-import { Block, blockFields, blockDefaults } from '../template'
+import Block, { blockFields, blockDefaults } from '../Block'
 
 const Text = styled.p`
   font-size: 1.375rem;

@@ -155,10 +155,12 @@ const ContentWrap = styled.div`
   margin: 0 auto;
 `
 
-export const Block = ({ children, ...props }) => {
+const Block = ({ children, ...props }) => {
   return (
     <BlockWrap {...props}>
       <ContentWrap>{children}</ContentWrap>
     </BlockWrap>
   )
 }
+
+export default Block

@@ -47,8 +47,8 @@ export default class Site extends App {
               <meta name="viewport" content="width=device-width, initial-scale=1" />
             </Head>
             <GlobalStyles />
-            {this.isAdmin && <EditLink cms={this.cms} />}
             <Component isEditing={this.isEditing} {...pageProps} />
+            {this.isAdmin && <EditLink cms={this.cms} />}
           </ThemeProvider>
         </TinacmsGithubProvider>
       </TinaProvider>

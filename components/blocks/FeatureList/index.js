@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { BlocksControls, InlineBlocks } from 'react-tinacms-inline'
 import { featureBlock } from './Feature'
-import { Block, blockFields, blockDefaults } from '../template'
+import Block, { blockFields, blockDefaults } from '../Block'
 
 const FeatureListBlocks = styled(InlineBlocks)`
   display: grid;

@@ -48,11 +48,16 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1:not(:last-child) {
+    font-size: 5rem;
     margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
   }
 
   h3 {
-    font-size: 1.5rem;
+    font-weight: 800;
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
     margin: 0;
   }
 
