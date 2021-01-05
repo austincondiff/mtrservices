@@ -45,7 +45,8 @@
           "position": 0
         }
       ],
-      "showScrollIndicator": true
+      "showScrollIndicator": true,
+      "buttonOrientation": "vertical"
     },
     {
       "_template": "features",
