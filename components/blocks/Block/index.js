@@ -224,9 +224,9 @@ const BackgroundGradient = styled.div`
   bottom: 0;
   left: 0;
   background: linear-gradient(
-    ${({ backgroundGradient }) =>
-      `${backgroundGradient.angle}deg ${backgroundGradient.stops
-        .map((stop) => `${stop.color} ${stop.position}`)
+    ${({ backgroundGradient, theme }) =>
+      `${backgroundGradient.angle}deg, ${backgroundGradient.stops
+        .map((stop) => `${theme.color[stop.color]} ${stop.position}%`)
         .join(', ')}`}
   );
 `

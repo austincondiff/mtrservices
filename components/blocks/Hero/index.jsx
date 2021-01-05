@@ -19,9 +19,13 @@ export function Hero({ data }) {
         <InlineTextarea name="subtext" />
       </p>
       {(data.primaryButtonLabel || data.secondaryButtonLabel) && (
-        <StyledButtonGroup orientation="vertical" gap="sm">
+        <StyledButtonGroup orientation={data.buttonOrientation === 'vertical' ? 'vertical' : 'horizontal'} gap="sm">
           {data.primaryButtonLabel && <Button variant="contained">{data.primaryButtonLabel}</Button>}
-          {data.secondaryButtonLabel && <Button>{data.secondaryButtonLabel}</Button>}
+          {data.secondaryButtonLabel && (
+            <Button variant={data.buttonOrientation === 'vertical' ? 'ghost' : 'outlined'}>
+              {data.secondaryButtonLabel}
+            </Button>
+          )}
         </StyledButtonGroup>
       )}
     </Block>
@@ -62,6 +66,15 @@ export const heroBlock = {
         name: 'secondaryButtonLink',
         label: 'Secondary Button Link',
         component: 'text',
+      },
+      {
+        name: 'buttonOrientation',
+        label: 'Button Orientation',
+        component: 'select',
+        options: [
+          { label: 'Vertical', value: 'vertical' },
+          { label: 'Horizontal', value: 'horizontal' },
+        ],
       },
       ...blockFields,
     ],
