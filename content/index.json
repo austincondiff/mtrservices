@@ -25,12 +25,12 @@
         "enable": true,
         "stops": [
           {
-            "color": "transparent",
+            "color": "primaryDark",
             "opacity": 1,
             "position": 0
           },
           {
-            "color": "primaryDark",
+            "color": "transparent",
             "opacity": 1,
             "position": 100
           }
