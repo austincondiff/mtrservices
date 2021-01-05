@@ -36,11 +36,16 @@
           "heading": "Telephone Systems",
           "supporting_copy": "Communication is integral in any business. That is why we can provide the most reliable, top of the line IP phone systems to get you talking in no time."
         }
-      ]
+      ],
+      "paddingTop": "md",
+      "paddingBottom": "md"
     },
     {
       "_template": "paragraph",
-      "text": "Call us today at 281 222 9992 to get started!"
+      "text": "Call us today at 281 222 9992 to get started!",
+      "paddingTop": "md",
+      "paddingBottom": "md",
+      "backgroundColor": "light"
     }
   ]
 }
