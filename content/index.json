@@ -11,7 +11,7 @@
       "contentParallax": false,
       "fullHeight": false,
       "width": "default",
-      "textAlign": "center",
+      "textAlign": "left",
       "paddingTop": "xl",
       "paddingBottom": "xl",
       "headline": "We are MTR Services",
@@ -46,14 +46,28 @@
         }
       ],
       "showScrollIndicator": true,
-      "buttonOrientation": "vertical"
+      "buttonOrientation": "horizontal"
+    },
+    {
+      "_template": "paragraph",
+      "color": "black",
+      "backgroundColor": "white",
+      "darkModeColorInverse": true,
+      "backgroundParallax": false,
+      "contentParallax": false,
+      "fullHeight": false,
+      "width": "default",
+      "textAlign": "left",
+      "paddingTop": "md",
+      "paddingBottom": "md",
+      "text": "At MTR Services, we are committed to giving our customers the most expert-level service possible so business operation is seamless. We understand that time is money and every moment down is another dollar lost. Our goal is to not only keep our clients and employees up and running but to create a technical landscape for our customers that fits their business objectives, not the other way around. "
     },
     {
       "_template": "features",
       "features": [
         {
           "_template": "feature",
-          "supporting_copy": "W, plan, strategize, and develop network architecture and technical infrastructure. From project inception to completion, we will work side by side with management and IT staff to insure an efficient, custom solution for your technical goals.",
+          "supporting_copy": "We plan, strategize, and develop network architecture and technical infrastructure. From project inception to completion, we will work side by side with management and IT staff to insure an efficient, custom solution for your technical goals.",
           "heading": "IT Consulting"
         },
         {
@@ -68,7 +82,9 @@
         }
       ],
       "paddingTop": "md",
-      "paddingBottom": "md"
+      "paddingBottom": "md",
+      "backgroundColor": "primary",
+      "color": "white"
     },
     {
       "_template": "paragraph",
