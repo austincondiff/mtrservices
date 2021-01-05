@@ -140,11 +140,12 @@ export const blockFields = [
 ]
 
 const BlockWrap = styled.section`
-  width: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
   text-align: ${({ textAlign }) => textAlign};
   padding: ${({ paddingTop, paddingBottom, theme }) =>
     `${theme.verticalSpacing[paddingTop]} 0 ${theme.verticalSpacing[paddingBottom]} 0`};
