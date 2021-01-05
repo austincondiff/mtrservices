@@ -22,10 +22,7 @@
       "backgroundImage": "/images/server-cables.jpg",
       "backgroundOpacity": 0.2,
       "backgroundGradient": {
-        "gradientSteps": [
-          {},
-          {}
-        ],
+        "show": true,
         "stops": [
           {
             "color": "white",
@@ -38,7 +35,7 @@
             "position": 100
           }
         ],
-        "type": "radial"
+        "type": "linear"
       },
       "stops": [
         {

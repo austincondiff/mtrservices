@@ -13,42 +13,91 @@ export const blockDefaults = {
   paddingBottom: 'md',
 }
 
+const themeColors = [
+  { value: 'transparent', label: 'Transparent' },
+  { value: 'white', label: 'White' },
+  { value: 'light', label: 'Light' },
+  { value: 'primaryLight', label: 'Primary Light' },
+  { value: 'secondaryLight', label: 'Secondary Light' },
+  { value: 'neutral', label: 'Neutral' },
+  { value: 'primary', label: 'Primary' },
+  { value: 'secondary', label: 'Secondary' },
+  { value: 'primaryDark', label: 'Primary Dark' },
+  { value: 'secondaryDark', label: 'Secondary Dark' },
+  { value: 'dark', label: 'Dark' },
+  { value: 'black', label: 'Black' },
+]
+
 export const blockFields = [
   {
     name: 'color',
     label: 'Text Color',
     component: 'select',
-    options: [
-      { value: 'white', label: 'White' },
-      { value: 'light', label: 'Light' },
-      { value: 'primaryLight', label: 'Primary Light' },
-      { value: 'secondaryLight', label: 'Secondary Light' },
-      { value: 'neutral', label: 'Neutral' },
-      { value: 'primary', label: 'Primary' },
-      { value: 'secondary', label: 'Secondary' },
-      { value: 'primaryDark', label: 'Primary Dark' },
-      { value: 'secondaryDark', label: 'Secondary Dark' },
-      { value: 'dark', label: 'Dark' },
-      { value: 'black', label: 'Black' },
-    ],
+    options: themeColors,
   },
   {
     name: 'backgroundColor',
     label: 'Background Color',
     component: 'select',
-    widget: 'block',
-    options: [
-      { value: 'white', label: 'White' },
-      { value: 'light', label: 'Light' },
-      { value: 'primaryLight', label: 'Primary Light' },
-      { value: 'secondaryLight', label: 'Secondary Light' },
-      { value: 'neutral', label: 'Neutral' },
-      { value: 'primary', label: 'Primary' },
-      { value: 'secondary', label: 'Secondary' },
-      { value: 'primaryDark', label: 'Primary Dark' },
-      { value: 'secondaryDark', label: 'Secondary Dark' },
-      { value: 'dark', label: 'Dark' },
-      { value: 'black', label: 'Black' },
+    options: themeColors,
+  },
+  {
+    name: 'backgroundGradient',
+    label: 'Background Gradient',
+    component: 'group',
+    fields: [
+      {
+        name: 'showGradient',
+        label: 'Show Gradient',
+        component: 'toggle',
+      },
+      {
+        name: 'angle',
+        label: 'Angle (In Degrees)',
+        component: 'number',
+      },
+      {
+        name: 'type',
+        label: 'Type',
+        component: 'select',
+        options: [
+          { label: 'Linear', value: 'linear' },
+          { label: 'Radial', value: 'radial' },
+        ],
+      },
+      {
+        name: 'stops',
+        label: 'Stops',
+        component: 'group-list',
+        defaultItem: {
+          color: 'transparent',
+          opacity: 1,
+          position: 0,
+        },
+        itemProps: (item) => ({
+          key: item.id,
+          label: `${item.opacity} ${item.color} ${item.position}%`,
+        }),
+        fields: [
+          {
+            name: 'color',
+            label: 'Color',
+            component: 'select',
+            options: themeColors,
+          },
+          {
+            name: 'opacity',
+            label: 'Opacity',
+            component: 'number',
+            step: 0.01,
+          },
+          {
+            name: 'position',
+            label: 'Position (0 - 100)',
+            component: 'number',
+          },
+        ],
+      },
     ],
   },
   {
@@ -168,11 +217,23 @@ const BackgroundImage = styled.div`
   ${({ backgroundImage }) => (backgroundImage ? `background-image: url(${backgroundImage});` : ``)}
   ${({ backgroundOpacity }) => (backgroundOpacity !== undefined ? `opacity: ${backgroundOpacity};` : ``)}
 `
+const BackgroundGradient = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    ${({ backgroundGradient }) => backgroundGradient.stops.map((stop) => `${stop.color} ${stop.position}`).join(', ')}
+  );
+`
 
 const Block = ({ children, ...props }) => {
   return (
     <BlockWrap {...props}>
-      {props.backgroundImage && <BackgroundImage {...props} />}
+      {props.backgroundImage && !props.backgroundVideo && <BackgroundImage {...props} />}
+      {props.backgroundVideo && <BackgroundVideo {...props} />}
+      {props.backgroundGradient?.show && <BackgroundGradient {...props} />}
       <ContentWrap>{children}</ContentWrap>
     </BlockWrap>
   )

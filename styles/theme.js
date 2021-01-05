@@ -1,5 +1,6 @@
 const theme = {
   color: {
+    transparent: 'transparent',
     white: 'white',
     neutral: 'gray',
     black: 'black',
