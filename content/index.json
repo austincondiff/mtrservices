@@ -6,7 +6,7 @@
       "_template": "hero",
       "color": "white",
       "backgroundColor": "primaryDark",
-      "darkModeColorInverse": true,
+      "darkModeColorInverse": false,
       "backgroundParallax": false,
       "contentParallax": false,
       "fullHeight": false,
