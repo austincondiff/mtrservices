@@ -35,6 +35,7 @@
             "position": 100
           }
         ],
+        "angle": 0,
         "type": "linear"
       },
       "stops": [
