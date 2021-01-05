@@ -60,13 +60,8 @@ export const blockFields = [
     name: 'backgroundImage',
     label: 'Background Image',
     component: 'image',
-    // Generate the frontmatter value based on the filename
-    parse: (media) => `/static/${media.filename}`,
-
-    // Decide the file upload directory for the post
+    parse: (media) => `/images/${media.filename}`,
     uploadDir: () => '/public/images/',
-
-    // Generate the src attribute for the preview image.
     previewSrc: (fullSrc) => fullSrc.replace('/public', ''),
   },
   {
@@ -156,22 +151,27 @@ const BlockWrap = styled.section`
   color: ${({ color, theme }) => theme.color[color]};
   background-color: ${({ backgroundColor, theme }) => theme.color[backgroundColor]};
   ${({ fullHeight }) => (fullHeight ? `height: 100vh;` : ``)}
-  ${({ backgroundImage }) =>
-    backgroundImage?.id
-      ? `
-    background-image: url(/${backgroundImage.id});
-  `
-      : ``}
 `
 const ContentWrap = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+`
+const BackgroundImage = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  ${({ backgroundImage }) => (backgroundImage ? `background-image: url(${backgroundImage});` : ``)}
+  ${({ backgroundOpacity }) => (backgroundOpacity !== undefined ? `opacity: ${backgroundOpacity};` : ``)}
 `
 
 const Block = ({ children, ...props }) => {
   return (
     <BlockWrap {...props}>
+      {props.backgroundImage && <BackgroundImage {...props} />}
       <ContentWrap>{children}</ContentWrap>
     </BlockWrap>
   )
