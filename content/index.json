@@ -1,4 +1,46 @@
 {
   "title": "MTR Services",
-  "body": "We are undergoing website maintenance. Please come back soon."
+  "body": "We are undergoing website maintenance. Please come back soon.",
+  "blocks": [
+    {
+      "_template": "hero",
+      "color": "white",
+      "backgroundColor": "black",
+      "darkModeColorInverse": true,
+      "backgroundParallax": false,
+      "contentParallax": false,
+      "fullHeight": true,
+      "width": "default",
+      "textAlign": "center",
+      "paddingTop": "md",
+      "paddingBottom": "md",
+      "headline": "We are MTR Services",
+      "subtext": "Let us manage the technical infrastructure for your small business so you can focus on what you do best.",
+      "align": "center"
+    },
+    {
+      "_template": "features",
+      "features": [
+        {
+          "_template": "feature",
+          "supporting_copy": "We develop, plan and strategize network architecture and technical infrastructure. From project inception to completion, we will work side by side with management and IT staff to insure an efficient, custom solution for your technical goals.",
+          "heading": "IT Consulting"
+        },
+        {
+          "_template": "feature",
+          "heading": "Network Management",
+          "supporting_copy": "From a virtual IT department to 24/7 helpdesk support, we keep your network and computers running at optimal performance levels for seamless business operation. ."
+        },
+        {
+          "_template": "feature",
+          "heading": "Telephone Systems",
+          "supporting_copy": "Communication is integral in any business. That is why we can provide the most reliable, top of the line IP phone systems to get you talking in no time."
+        }
+      ]
+    },
+    {
+      "_template": "paragraph",
+      "text": "Call us today at 281 222 9992 to get started!"
+    }
+  ]
 }
