@@ -47,8 +47,8 @@ export const blockFields = [
     component: 'group',
     fields: [
       {
-        name: 'showGradient',
-        label: 'Show Gradient',
+        name: 'enable',
+        label: 'Enable',
         component: 'toggle',
       },
       {
@@ -224,7 +224,10 @@ const BackgroundGradient = styled.div`
   bottom: 0;
   left: 0;
   background: linear-gradient(
-    ${({ backgroundGradient }) => backgroundGradient.stops.map((stop) => `${stop.color} ${stop.position}`).join(', ')}
+    ${({ backgroundGradient }) =>
+      `${backgroundGradient.angle}deg ${backgroundGradient.stops
+        .map((stop) => `${stop.color} ${stop.position}`)
+        .join(', ')}`}
   );
 `
 
@@ -233,7 +236,7 @@ const Block = ({ children, ...props }) => {
     <BlockWrap {...props}>
       {props.backgroundImage && !props.backgroundVideo && <BackgroundImage {...props} />}
       {props.backgroundVideo && <BackgroundVideo {...props} />}
-      {props.backgroundGradient?.show && <BackgroundGradient {...props} />}
+      {props.backgroundGradient?.enable && <BackgroundGradient {...props} />}
       <ContentWrap>{children}</ContentWrap>
     </BlockWrap>
   )
