@@ -10,6 +10,11 @@ const theme = {
     secondary: '#f57c00',
     secondaryDark: '#bf360c',
   },
+  pageWidth: {
+    narrow: 960,
+    default: 1200,
+    wide: 1600,
+  },
   spacing: {
     none: '0',
     xs: '8px',

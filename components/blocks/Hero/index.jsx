@@ -12,24 +12,28 @@ const BlockWrap = styled.section`
   flex-direction: column;
   text-align: ${({ textAlign }) => textAlign};
   padding: ${({ paddingTop, paddingBottom, theme }) =>
-      `${theme.verticalSpacing[paddingTop]} 0 ${theme.verticalSpacing[paddingBottom]} 0`}
-    16vh 0 16vh 0;
+    `${theme.verticalSpacing[paddingTop]} 0 ${theme.verticalSpacing[paddingBottom]} 0`};
   color: ${({ color, theme }) => theme.color[color]};
   background-color: ${({ backgroundColor, theme }) => theme.color[backgroundColor]};
   ${({ fullHeight }) => (fullHeight ? `height: 100vh;` : ``)}
+`
+const ContentWrap = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 `
 
 export function Hero({ data }) {
   return (
     <BlockWrap {...data}>
-      <div className="wrapper wrapper--narrow">
+      <ContentWrap>
         <h1>
           <InlineTextarea name="headline" />
         </h1>
         <p>
           <InlineTextarea name="subtext" />
         </p>
-      </div>
+      </ContentWrap>
     </BlockWrap>
   )
 }
