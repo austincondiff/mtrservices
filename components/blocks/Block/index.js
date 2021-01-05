@@ -60,6 +60,14 @@ export const blockFields = [
     name: 'backgroundImage',
     label: 'Background Image',
     component: 'image',
+    // Generate the frontmatter value based on the filename
+    parse: (media) => `/static/${media.filename}`,
+
+    // Decide the file upload directory for the post
+    uploadDir: () => '/public/images/',
+
+    // Generate the src attribute for the preview image.
+    previewSrc: (fullSrc) => fullSrc.replace('/public', ''),
   },
   {
     name: 'backgroundVideo',
@@ -148,6 +156,12 @@ const BlockWrap = styled.section`
   color: ${({ color, theme }) => theme.color[color]};
   background-color: ${({ backgroundColor, theme }) => theme.color[backgroundColor]};
   ${({ fullHeight }) => (fullHeight ? `height: 100vh;` : ``)}
+  ${({ backgroundImage }) =>
+    backgroundImage?.id
+      ? `
+    background-image: url(/${backgroundImage.id});
+  `
+      : ``}
 `
 const ContentWrap = styled.div`
   width: 100%;

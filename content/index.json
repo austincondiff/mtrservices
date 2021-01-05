@@ -18,14 +18,7 @@
       "subtext": "Let us manage the technical infrastructure for your small business so you can focus on what you do best.",
       "align": "center",
       "primaryButtonLabel": "Get a Quote",
-      "secondaryButtonLabel": "Learn More",
-      "backgroundImage": {
-        "id": "public/images/server-cables.jpg",
-        "filename": "server-cables.jpg",
-        "directory": "public/images/",
-        "type": "file",
-        "previewSrc": "https://raw.githubusercontent.com/austincondiff/mtrservices/master/public/images/server-cables.jpg"
-      }
+      "secondaryButtonLabel": "Learn More"
     },
     {
       "_template": "features",
