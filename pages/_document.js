@@ -32,16 +32,11 @@ class CustomDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.png" />
         </Head>
         <body>
           <Main />
           <NextScript />
-          <div id="popovers" />
-          <div id="toasts" />
-          <div id="modals" />
-          <div id="selectMenus" />
         </body>
       </Html>
     )

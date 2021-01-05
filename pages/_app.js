@@ -1,8 +1,11 @@
 import App from 'next/app'
+import Head from 'next/head'
 import { TinaCMS, TinaProvider } from 'tinacms'
 import { GithubClient, GithubMediaStore, TinacmsGithubProvider } from 'react-tinacms-github'
+import { ThemeProvider } from 'styled-components'
 import isInBrowser from 'is-in-browser'
 import GlobalStyles from '@styles/GlobalStyles'
+import theme from '@styles/theme'
 
 export default class Site extends App {
   constructor(props) {
@@ -14,8 +17,6 @@ export default class Site extends App {
       subdomain === 'localhost' ||
       props.host?.includes('admin') ||
       props.host?.includes('localhost')
-
-    console.log({ props, isAdmin: this.isAdmin })
 
     this.isEditing = !!this.isAdmin && !!props.pageProps.preview
 
@@ -41,9 +42,14 @@ export default class Site extends App {
     return (
       <TinaProvider cms={this.cms}>
         <TinacmsGithubProvider onLogin={onLogin} onLogout={onLogout} error={pageProps.error}>
-          <GlobalStyles />
-          {this.isAdmin && <EditLink cms={this.cms} />}
-          <Component isEditing={this.isEditing} {...pageProps} />
+          <ThemeProvider theme={theme}>
+            <Head>
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+            </Head>
+            <GlobalStyles />
+            {this.isAdmin && <EditLink cms={this.cms} />}
+            <Component isEditing={this.isEditing} {...pageProps} />
+          </ThemeProvider>
         </TinacmsGithubProvider>
       </TinaProvider>
     )

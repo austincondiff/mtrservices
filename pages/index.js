@@ -27,12 +27,6 @@ export default function Home({ file, preview }) {
       </Head>
       <InlineForm form={form}>
         <main>
-          <h1>
-            <InlineTextarea name={'title'} />
-          </h1>
-          <div className="description">
-            <InlineTextarea name={'body'} />
-          </div>
           <InlineBlocks name="blocks" blocks={HOME_BLOCKS} />
         </main>
       </InlineForm>

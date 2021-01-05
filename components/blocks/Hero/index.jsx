@@ -2,20 +2,26 @@ import React from 'react'
 import styled from 'styled-components'
 // 1. Import 'BlocksControls'
 import { InlineTextarea, BlocksControls } from 'react-tinacms-inline'
+import { blockFields, blockDefaults } from '../template'
 
-const HeroWrap = styled.section`
+const BlockWrap = styled.section`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  text-align: center;
-  padding: 16vh 0;
+  text-align: ${({ textAlign }) => textAlign};
+  padding: ${({ paddingTop, paddingBottom, theme }) =>
+      `${theme.verticalSpacing[paddingTop]} 0 ${theme.verticalSpacing[paddingBottom]} 0`}
+    16vh 0 16vh 0;
+  color: ${({ color, theme }) => theme.color[color]};
+  background-color: ${({ backgroundColor, theme }) => theme.color[backgroundColor]};
+  ${({ fullHeight }) => (fullHeight ? `height: 100vh;` : ``)}
 `
 
-export function Hero() {
+export function Hero({ data }) {
   return (
-    <HeroWrap>
+    <BlockWrap {...data}>
       <div className="wrapper wrapper--narrow">
         <h1>
           <InlineTextarea name="headline" />
@@ -24,121 +30,47 @@ export function Hero() {
           <InlineTextarea name="subtext" />
         </p>
       </div>
-    </HeroWrap>
+    </BlockWrap>
   )
 }
 
 // 2. Define the block component with Hero
 export const heroBlock = {
-  Component: ({ index }) => (
-    <BlocksControls index={index}>
-      <Hero />
+  Component: ({ index, data }) => (
+    <BlocksControls insetControls focusRing={{ offset: { x: 0, y: 0 }, borderRadius: 0 }} index={index}>
+      <Hero data={data} />
     </BlocksControls>
   ),
   template: {
     label: 'Hero',
     defaultItem: {
-      headline: 'Suspended in a Sunbeam',
-      subtext: 'Dispassionate extraterrestrial observer',
-      backgroundColor: 'white',
-      textColor: 'black',
+      ...blockDefaults,
+      headline: 'The quick brown fox jumped over the lazy dog.',
+      subtext: 'The quick brown fox jumped over the lazy dog.',
       align: 'center',
     },
     fields: [
       {
-        name: 'background_color',
-        label: 'Background Color',
-        component: 'select',
-        widget: 'block',
-        options: [
-          { value: 'white', label: 'White' },
-          { value: 'light', label: 'Light' },
-          { value: 'primaryLight', label: 'Primary Light' },
-          { value: 'secondaryLight', label: 'Secondary Light' },
-          { value: 'neutral', label: 'Neutral' },
-          { value: 'primary', label: 'Primary' },
-          { value: 'secondary', label: 'Secondary' },
-          { value: 'primaryDark', label: 'Primary Dark' },
-          { value: 'secondaryDark', label: 'Secondary Dark' },
-          { value: 'dark', label: 'Dark' },
-          { value: 'black', label: 'Black' },
-        ],
+        name: 'primaryButtonLabel',
+        label: 'Primary Button Label',
+        component: 'text',
       },
       {
-        name: 'text_color',
-        label: 'Text Color',
-        component: 'select',
-        options: [
-          { value: 'white', label: 'White' },
-          { value: 'light', label: 'Light' },
-          { value: 'primaryLight', label: 'Primary Light' },
-          { value: 'secondaryLight', label: 'Secondary Light' },
-          { value: 'neutral', label: 'Neutral' },
-          { value: 'primary', label: 'Primary' },
-          { value: 'secondary', label: 'Secondary' },
-          { value: 'primaryDark', label: 'Primary Dark' },
-          { value: 'secondaryDark', label: 'Secondary Dark' },
-          { value: 'dark', label: 'Dark' },
-          { value: 'black', label: 'Black' },
-        ],
+        name: 'primaryButtonLink',
+        label: 'Primary Button Link',
+        component: 'text',
       },
       {
-        name: 'inverse_colors_for_dark_mode',
-        label: 'Inverse Colors for Dark Mode',
-        component: 'toggle',
+        name: 'secondaryButtonLabel',
+        label: 'Secondary Button Label',
+        component: 'text',
       },
       {
-        name: 'fullHeight',
-        label: 'Full Height',
-        component: 'toggle',
+        name: 'secondaryButtonLink',
+        label: 'Secondary Button Link',
+        component: 'text',
       },
-      {
-        name: 'Width',
-        label: 'Full Width',
-        component: 'select',
-        options: [
-          { value: 'narrow', label: 'Narrow' },
-          { value: 'default', label: 'Default' },
-          { value: 'wide', label: 'Wide' },
-          { value: 'fullWidth', label: 'Full Width' },
-        ],
-      },
-      {
-        name: 'align',
-        label: 'Alignment',
-        component: 'select',
-        options: [
-          { value: 'left', label: 'Left' },
-          { value: 'center', label: 'Center' },
-          { value: 'right', label: 'Right' },
-        ],
-      },
-      {
-        name: 'padding_top',
-        label: 'Padding Top',
-        component: 'select',
-        options: [
-          { value: 'none', label: 'None' },
-          { value: 'xs', label: 'Extra Small' },
-          { value: 'sm', label: 'Small' },
-          { value: 'md', label: 'Medium' },
-          { value: 'lg', label: 'Large' },
-          { value: 'xl', label: 'Extra Large' },
-        ],
-      },
-      {
-        name: 'padding_bottom',
-        label: 'Padding Bottom',
-        component: 'select',
-        options: [
-          { value: 'none', label: 'None' },
-          { value: 'xs', label: 'Extra Small' },
-          { value: 'sm', label: 'Small' },
-          { value: 'md', label: 'Medium' },
-          { value: 'lg', label: 'Large' },
-          { value: 'xl', label: 'Extra Large' },
-        ],
-      },
+      ...blockFields,
     ],
   },
 }
