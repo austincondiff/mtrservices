@@ -20,7 +20,33 @@
       "primaryButtonLabel": "Get a Quote",
       "secondaryButtonLabel": "Learn More",
       "backgroundImage": "/images/server-cables.jpg",
-      "backgroundOpacity": 0.2
+      "backgroundOpacity": 0.2,
+      "backgroundGradient": {
+        "gradientSteps": [
+          {},
+          {}
+        ],
+        "stops": [
+          {
+            "color": "white",
+            "opacity": 1,
+            "position": 0
+          },
+          {
+            "color": "black",
+            "opacity": 1,
+            "position": 100
+          }
+        ],
+        "type": "radial"
+      },
+      "stops": [
+        {
+          "color": "transparent",
+          "opacity": 1,
+          "position": 0
+        }
+      ]
     },
     {
       "_template": "features",
