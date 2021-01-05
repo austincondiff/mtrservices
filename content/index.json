@@ -18,7 +18,9 @@
       "subtext": "Let us manage the technical infrastructure for your small business so you can focus on what you do best.",
       "align": "center",
       "primaryButtonLabel": "Get a Quote",
-      "secondaryButtonLabel": "Learn More"
+      "secondaryButtonLabel": "Learn More",
+      "backgroundImage": "/images/server-cables.jpg",
+      "backgroundOpacity": 0.2
     },
     {
       "_template": "features",
