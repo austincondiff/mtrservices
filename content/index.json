@@ -16,7 +16,9 @@
       "paddingBottom": "xl",
       "headline": "We are MTR Services",
       "subtext": "Let us manage the technical infrastructure for your small business so you can focus on what you do best.",
-      "align": "center"
+      "align": "center",
+      "primaryButtonLabel": "Get a Quote",
+      "secondaryButtonLabel": "Learn More"
     },
     {
       "_template": "features",
