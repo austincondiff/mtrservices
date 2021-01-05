@@ -54,7 +54,8 @@
       "text": "Call us today at 281 222 9992 to get started!",
       "paddingTop": "md",
       "paddingBottom": "md",
-      "backgroundColor": "light"
+      "backgroundColor": "light",
+      "textAlign": "center"
     }
   ]
 }
