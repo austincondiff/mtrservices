@@ -44,7 +44,8 @@
           "opacity": 1,
           "position": 0
         }
-      ]
+      ],
+      "showScrollIndicator": true
     },
     {
       "_template": "features",
