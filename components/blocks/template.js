@@ -1,3 +1,5 @@
+import styled from 'styled-components'
+
 export const blockDefaults = {
   color: 'black',
   backgroundColor: 'white',
@@ -133,3 +135,30 @@ export const blockFields = [
     ],
   },
 ]
+
+const BlockWrap = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: ${({ textAlign }) => textAlign};
+  padding: ${({ paddingTop, paddingBottom, theme }) =>
+    `${theme.verticalSpacing[paddingTop]} 0 ${theme.verticalSpacing[paddingBottom]} 0`};
+  color: ${({ color, theme }) => theme.color[color]};
+  background-color: ${({ backgroundColor, theme }) => theme.color[backgroundColor]};
+  ${({ fullHeight }) => (fullHeight ? `height: 100vh;` : ``)}
+`
+const ContentWrap = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+`
+
+export const Block = ({ children, ...props }) => {
+  return (
+    <BlockWrap {...props}>
+      <ContentWrap>{children}</ContentWrap>
+    </BlockWrap>
+  )
+}

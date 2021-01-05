@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { BlocksControls, InlineBlocks } from 'react-tinacms-inline'
 import { featureBlock } from './Feature'
+import { Block, blockFields, blockDefaults } from '../template'
 
 const FeatureListBlocks = styled(InlineBlocks)`
   display: grid;
@@ -10,13 +11,11 @@ const FeatureListBlocks = styled(InlineBlocks)`
   grid-template-rows: auto;
 `
 
-function FeatureList({ index }) {
+function FeatureList({ data }) {
   return (
-    <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
-      <div className="wrapper">
-        <FeatureListBlocks name="features" blocks={FEATURE_BLOCKS} direction="row" className="feature-list" max={3} />
-      </div>
-    </BlocksControls>
+    <Block {...data}>
+      <FeatureListBlocks name="features" blocks={FEATURE_BLOCKS} direction="row" className="feature-list" max={3} />
+    </Block>
   )
 }
 
@@ -25,11 +24,16 @@ const FEATURE_BLOCKS = {
 }
 
 export const featureListBlock = {
-  Component: FeatureList,
+  Component: ({ index, data }) => (
+    <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
+      <FeatureList data={data} />
+    </BlocksControls>
+  ),
   template: {
     label: 'Feature List',
     defaultItem: {
       _template: 'features',
+      ...blockDefaults,
       features: [
         {
           _template: 'feature',
@@ -48,6 +52,6 @@ export const featureListBlock = {
         },
       ],
     },
-    fields: [],
+    fields: [...blockFields],
   },
 }

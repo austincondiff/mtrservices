@@ -9,6 +9,7 @@ const theme = {
     secondaryLight: '#ffcc80',
     secondary: '#f57c00',
     secondaryDark: '#bf360c',
+    light: '#eff4f6',
   },
   pageWidth: {
     narrow: 960,

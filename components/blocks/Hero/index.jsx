@@ -2,39 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 // 1. Import 'BlocksControls'
 import { InlineTextarea, BlocksControls } from 'react-tinacms-inline'
-import { blockFields, blockDefaults } from '../template'
-
-const BlockWrap = styled.section`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: ${({ textAlign }) => textAlign};
-  padding: ${({ paddingTop, paddingBottom, theme }) =>
-    `${theme.verticalSpacing[paddingTop]} 0 ${theme.verticalSpacing[paddingBottom]} 0`};
-  color: ${({ color, theme }) => theme.color[color]};
-  background-color: ${({ backgroundColor, theme }) => theme.color[backgroundColor]};
-  ${({ fullHeight }) => (fullHeight ? `height: 100vh;` : ``)}
-`
-const ContentWrap = styled.div`
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-`
+import { Block, blockFields, blockDefaults } from '../template'
 
 export function Hero({ data }) {
   return (
-    <BlockWrap {...data}>
-      <ContentWrap>
-        <h1>
-          <InlineTextarea name="headline" />
-        </h1>
-        <p>
-          <InlineTextarea name="subtext" />
-        </p>
-      </ContentWrap>
-    </BlockWrap>
+    <Block {...data}>
+      <h1>
+        <InlineTextarea name="headline" />
+      </h1>
+      <p>
+        <InlineTextarea name="subtext" />
+      </p>
+    </Block>
   )
 }
 
