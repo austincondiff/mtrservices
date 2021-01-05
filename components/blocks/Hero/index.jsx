@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 // 1. Import 'BlocksControls'
 import { InlineTextarea, BlocksControls } from 'react-tinacms-inline'
 import Block, { blockFields, blockDefaults } from '../Block'
@@ -7,6 +7,36 @@ import Button, { ButtonGroup } from '@components/common/Button'
 
 const StyledButtonGroup = styled(ButtonGroup)`
   margin-top: ${({ theme }) => theme.spacing.lg};
+`
+
+const arrowBounce = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+`
+const Arrow = styled.div`
+  position: absolute;
+  bottom: -16vh;
+  left: calc(50% - 8px);
+  animation: ${arrowBounce} 2s infinite;
+  &:after {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    transform: rotate(45deg);
+    border-right: 1.5px solid white;
+    border-bottom: 1.5px solid white;
+  }
+  /* mediaQueries.sm {
+    bottom: 6vw;
+  } */
 `
 
 export function Hero({ data }) {
@@ -28,6 +58,7 @@ export function Hero({ data }) {
           )}
         </StyledButtonGroup>
       )}
+      {data.showScrollIndicator && <Arrow />}
     </Block>
   )
 }
@@ -75,6 +106,11 @@ export const heroBlock = {
           { label: 'Vertical', value: 'vertical' },
           { label: 'Horizontal', value: 'horizontal' },
         ],
+      },
+      {
+        name: 'showScrollIndicator',
+        label: 'Show Scroll Indicator',
+        component: 'toggle',
       },
       ...blockFields,
     ],
