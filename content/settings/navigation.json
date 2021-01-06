@@ -1,1 +1,11 @@
-{}
+{
+  "links": [
+    {
+      "color": "transparent",
+      "opacity": 1,
+      "position": 0,
+      "label": "Home",
+      "url": "/"
+    }
+  ]
+}
