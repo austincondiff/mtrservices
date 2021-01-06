@@ -12,22 +12,58 @@ export default function Home({ file, themeFile, navigationFile, siteFile, previe
   const formOptions = {
     label: 'Home Page',
     fields: [
-      { name: 'title', component: 'text' },
+      { name: 'title', component: 'image' },
       { name: 'body', component: 'textarea' },
     ],
   }
   const themeFormOptions = {
     label: 'Theme',
     fields: [
-      { name: 'logo', component: 'media' },
+      { name: 'logo', component: 'image' },
       { name: 'test', component: 'textarea' },
     ],
   }
   const navigationFormOptions = {
     label: 'Navigation',
     fields: [
-      { name: 'logo', component: 'media' },
+      { name: 'logo', component: 'image' },
       { name: 'test', component: 'textarea' },
+      {
+        name: 'links',
+        label: 'Links',
+        component: 'group-list',
+        defaultItem: {
+          color: 'transparent',
+          opacity: 1,
+          position: 0,
+        },
+        itemProps: (item) => ({
+          key: item.id,
+          label: item.label || 'Link',
+        }),
+        fields: [
+          {
+            name: 'label',
+            label: 'Label',
+            component: 'text',
+          },
+          {
+            name: 'url',
+            label: 'URL',
+            component: 'text',
+          },
+          {
+            name: 'newWindow',
+            label: 'Open in new window',
+            component: 'toggle',
+          },
+          {
+            name: 'isButton',
+            label: 'Button',
+            component: 'toggle',
+          },
+        ],
+      },
     ],
   }
   const siteFormOptions = {
@@ -72,23 +108,25 @@ export const getStaticProps = async function ({ preview, previewData, ...ctx }) 
       branch: previewData?.head_branch || 'master',
       accessToken: previewData?.github_access_token || '',
     }
+    console.log({ githubOptions })
     const pageProps = await getGithubPreviewProps({
       ...previewData,
       fileRelativePath: 'content/pages/index.json',
       parse: parseJson,
     })
+    console.log({ pageProps })
     const themeFile = await getGithubFile({
-      ...githubOptions,
+      ...previewData,
       fileRelativePath: 'content/settings/theme.json',
       parse: parseJson,
     })
     const navigationFile = await getGithubFile({
-      ...githubOptions,
+      ...previewData,
       fileRelativePath: 'content/settings/navigation.json',
       parse: parseJson,
     })
     const siteFile = await getGithubFile({
-      ...githubOptions,
+      ...previewData,
       fileRelativePath: 'content/settings/site.json',
       parse: parseJson,
     })
