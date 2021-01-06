@@ -4,8 +4,36 @@
       "color": "transparent",
       "opacity": 1,
       "position": 0,
+      "label": "About",
+      "url": "/about"
+    },
+    {
+      "color": "transparent",
+      "opacity": 1,
+      "position": 0,
       "label": "Home",
       "url": "/"
+    },
+    {
+      "color": "transparent",
+      "opacity": 1,
+      "position": 0,
+      "label": "Services",
+      "url": "/services"
+    },
+    {
+      "color": "transparent",
+      "opacity": 1,
+      "position": 0,
+      "label": "Contact",
+      "url": "/contact"
+    },
+    {
+      "color": "transparent",
+      "opacity": 1,
+      "position": 0,
+      "label": "Get a Quote",
+      "url": "/contact?method=quote"
     }
   ]
 }
