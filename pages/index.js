@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
+import { getGithubPreviewProps, getGithubFile, parseJson } from 'next-tinacms-github'
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github'
 import { InlineForm, InlineBlocks, InlineTextarea } from 'react-tinacms-inline'
 import { useFormScreenPlugin, usePlugin } from 'tinacms'
