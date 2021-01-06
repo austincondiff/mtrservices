@@ -6,7 +6,6 @@ import { ThemeProvider } from 'styled-components'
 import isInBrowser from 'is-in-browser'
 import GlobalStyles from '@styles/GlobalStyles'
 import theme from '@styles/theme'
-
 export default class Site extends App {
   constructor(props) {
     super(props)
