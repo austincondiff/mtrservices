@@ -1,27 +1,22 @@
 {
   "links": [
     {
-      "color": "transparent",
-      "label": "About",
-      "url": "/about"
-    },
-    {
-      "color": "transparent",
       "label": "Home",
       "url": "/"
     },
     {
-      "color": "transparent",
       "label": "Services",
       "url": "/services"
     },
     {
-      "color": "transparent",
+      "label": "About",
+      "url": "/about"
+    },
+    {
       "label": "Contact",
       "url": "/contact"
     },
     {
-      "color": "transparent",
       "label": "Get a Quote",
       "url": "/contact?method=quote",
       "isButton": true

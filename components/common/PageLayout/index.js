@@ -1,13 +1,12 @@
-const PageLayout = ({ children }) => {
-  return <div>{children}</div>
-}
+import Navigation from '@components/common/Navigation'
 
-export const getStaticProps = async function (props) {
-  console.log({ props })
-
-  return {
-    props: {},
-  }
+const PageLayout = ({ children, navigation, site, theme, adminToolbarVisible }) => {
+  return (
+    <>
+      <Navigation {...navigation} adminToolbarVisible={adminToolbarVisible} />
+      <div className="container">{children}</div>
+    </>
+  )
 }
 
 export default PageLayout

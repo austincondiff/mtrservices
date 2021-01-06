@@ -2,11 +2,58 @@ import Head from 'next/head'
 import { getGithubPreviewProps, getGithubFile, parseJson } from 'next-tinacms-github'
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github'
 import { InlineForm, InlineBlocks, InlineTextarea } from 'react-tinacms-inline'
-import { useFormScreenPlugin, usePlugin } from 'tinacms'
+import { useFormScreenPlugin, usePlugins } from 'tinacms'
 import Footer from '@components/common/Footer'
+import PageLayout from '@components/common/PageLayout'
 import { featureListBlock } from '@components/blocks/FeatureList'
 import { heroBlock } from '@components/blocks/Hero'
 import { paragraphBlock } from '@components/blocks/Paragraph'
+import slugify from 'react-slugify'
+
+// const CreatePageButton = createRemarkButton({
+//   label: 'New Page',
+//   filename(form) {
+//     let slug = slugify(form.title.toLowerCase())
+
+//     return `content/pages/${slug}.json`
+//   },
+//   frontmatter(form) {
+//     let slug = slugify(form.title.toLowerCase())
+
+//     return new Promise((resolve) => {
+//       resolve({
+//         title: form.title,
+//         description: form.description,
+//         date: new Date(),
+//         path: `content/pages/${slug}`,
+//       })
+//     })
+//   },
+//   fields: [
+//     { name: 'title', label: 'Title', component: 'text', required: true },
+//     { name: 'description', label: 'Description', component: 'text', required: true },
+//   ],
+// })
+
+const PageCreatorPlugin = {
+  __type: 'content-creator',
+  fields: [
+    {
+      label: 'Title',
+      name: 'title',
+      component: 'text',
+      validation(title) {
+        if (!title) return 'Required.'
+      },
+    },
+    { name: 'title', label: 'Title', component: 'text', required: true },
+    { name: 'description', label: 'Description', component: 'text', required: true },
+  ],
+  onSubmit(values, cms) {
+    // Call functions that create the new blog post. For example:
+    // cms.apis.someBackend.createPost(values)
+  },
+}
 
 export default function Home({ file, themeFile, navigationFile, siteFile, preview }) {
   const formOptions = {
@@ -75,19 +122,18 @@ export default function Home({ file, themeFile, navigationFile, siteFile, previe
   }
 
   const [page, form] = useGithubJsonForm(file, formOptions)
-
   const [theme, themeForm] = useGithubJsonForm(themeFile, themeFormOptions)
   const [navigation, navigationForm] = useGithubJsonForm(navigationFile, navigationFormOptions)
   const [site, siteForm] = useGithubJsonForm(siteFile, siteFormOptions)
 
-  usePlugin(form)
+  usePlugins([form])
   useFormScreenPlugin(themeForm)
   useFormScreenPlugin(navigationForm)
   useFormScreenPlugin(siteForm)
   useGithubToolbarPlugins()
 
   return (
-    <div className="container">
+    <PageLayout adminToolbarVisible={preview} navigation={navigation} theme={theme} site={site}>
       <Head>
         <title>{page.title}</title>
       </Head>
@@ -97,37 +143,35 @@ export default function Home({ file, themeFile, navigationFile, siteFile, previe
         </main>
       </InlineForm>
       <Footer />
-    </div>
+    </PageLayout>
   )
 }
 
 export const getStaticProps = async function ({ preview, previewData, ...ctx }) {
+  const pageFilePath = `content/pages/index.json`
+  const themeFilePath = `content/settings/theme.json`
+  const navigationFilePath = `content/settings/navigation.json`
+  const siteFilePath = `content/settings/site.json`
+
   if (preview) {
-    const githubOptions = {
-      repoFullName: previewData?.working_repo_full_name || 'https://github.com/austincondiff/mtrservices',
-      branch: previewData?.head_branch || 'master',
-      accessToken: previewData?.github_access_token || '',
-    }
-    console.log({ githubOptions })
     const pageProps = await getGithubPreviewProps({
       ...previewData,
-      fileRelativePath: 'content/pages/index.json',
+      fileRelativePath: pageFilePath,
       parse: parseJson,
     })
-    console.log({ pageProps })
     const themeFile = await getGithubFile({
       ...previewData,
-      fileRelativePath: 'content/settings/theme.json',
+      fileRelativePath: themeFilePath,
       parse: parseJson,
     })
     const navigationFile = await getGithubFile({
       ...previewData,
-      fileRelativePath: 'content/settings/navigation.json',
+      fileRelativePath: navigationFilePath,
       parse: parseJson,
     })
     const siteFile = await getGithubFile({
       ...previewData,
-      fileRelativePath: 'content/settings/site.json',
+      fileRelativePath: siteFilePath,
       parse: parseJson,
     })
 
@@ -147,45 +191,24 @@ export const getStaticProps = async function ({ preview, previewData, ...ctx }) 
       error: null,
       preview: false,
       file: {
-        fileRelativePath: 'content/pages/index.json',
-        data: (await import('../content/pages/index.json')).default,
+        fileRelativePath: pageFilePath,
+        data: (await import(`../${pageFilePath}`)).default,
       },
       themeFile: {
-        fileRelativePath: 'content/settings/theme.json',
-        data: (await import('../content/settings/theme.json')).default,
+        fileRelativePath: themeFilePath,
+        data: (await import(`../${themeFilePath}`)).default,
       },
       navigationFile: {
-        fileRelativePath: 'content/settings/navigation.json',
-        data: (await import('../content/settings/navigation.json')).default,
+        fileRelativePath: navigationFilePath,
+        data: (await import(`../${navigationFilePath}`)).default,
       },
       siteFile: {
-        fileRelativePath: 'content/settings/site.json',
-        data: (await import('../content/settings/site.json')).default,
+        fileRelativePath: siteFilePath,
+        data: (await import(`../${siteFilePath}`)).default,
       },
     },
   }
 }
-
-// export const getStaticProps = async function ({ preview, previewData }) {
-//   if (preview) {
-//     return getGithubPreviewProps({
-//       ...previewData,
-//       fileRelativePath: 'content/index.json',
-//       parse: parseJson,
-//     })
-//   }
-//   return {
-//     props: {
-//       sourceProvider: null,
-//       error: null,
-//       preview: false,
-//       file: {
-//         fileRelativePath: 'content/index.json',
-//         data: (await import('../content/index.json')).default,
-//       },
-//     },
-//   }
-// }
 
 const HOME_BLOCKS = {
   hero: heroBlock,
