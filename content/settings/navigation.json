@@ -33,7 +33,8 @@
       "opacity": 1,
       "position": 0,
       "label": "Get a Quote",
-      "url": "/contact?method=quote"
+      "url": "/contact?method=quote",
+      "isButton": true
     }
   ]
 }
