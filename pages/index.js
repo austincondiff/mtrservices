@@ -94,10 +94,12 @@ export const getStaticProps = async function ({ preview, previewData, ...ctx }) 
     })
 
     return {
-      ...pageProps?.props,
-      themeFile,
-      navigationFile,
-      siteFile,
+      props: {
+        ...pageProps?.props,
+        themeFile,
+        navigationFile,
+        siteFile,
+      },
     }
   }
 
@@ -116,11 +118,11 @@ export const getStaticProps = async function ({ preview, previewData, ...ctx }) 
       },
       navigationFile: {
         fileRelativePath: 'content/settings/navigation.json',
-        data: (await import('../content/navigation.json')).default,
+        data: (await import('../content/settings/navigation.json')).default,
       },
       siteFile: {
         fileRelativePath: 'content/settings/site.json',
-        data: (await import('../content/site.json')).default,
+        data: (await import('../content/settings/site.json')).default,
       },
     },
   }
