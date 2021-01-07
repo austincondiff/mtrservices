@@ -1,14 +1,6 @@
 {
   "links": [
     {
-      "color": "transparent",
-      "opacity": 1,
-      "position": 0,
-      "label": "Get Support",
-      "url": "support.mtrservices.com",
-      "newWindow": true
-    },
-    {
       "label": "Home",
       "url": "/"
     },
@@ -23,6 +15,14 @@
     {
       "label": "Contact",
       "url": "/contact"
+    },
+    {
+      "color": "transparent",
+      "opacity": 1,
+      "position": 0,
+      "label": "Get Support",
+      "url": "support.mtrservices.com",
+      "newWindow": true
     },
     {
       "label": "Get a Quote",
