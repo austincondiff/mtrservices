@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { withRouter } from 'next/router'
 import Link from 'next/link'
 import styled from 'styled-components'
 import Button from '@components/common/Button'
@@ -36,19 +37,38 @@ const StyledLink = styled.a`
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
+  display: block;
+  position: relative;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: ${({ active }) => (active ? `linear-gradient(90deg, #f25e1c 0%, #edc621 100%)` : `transparent`)};
+  }
 `
 
-const Navigation = ({ links, adminToolbarVisible }) => {
+const Navigation = ({ links, adminToolbarVisible, router }) => {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       if (window.scrollY === 0) {
         setScrolled(false)
       } else if (scrolled === false) {
         setScrolled(true)
       }
-    })
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   return (
@@ -58,13 +78,13 @@ const Navigation = ({ links, adminToolbarVisible }) => {
       </LogoWrap>
       <Links dark={scrolled}>
         {links?.map((link, i) => (
-          <Link href={`${link?.url || null}`} key={`navLink-${i}`} passHref={!link.isButton}>
+          <Link href={`${link.url || null}`} key={`navLink-${i}`} passHref={!link.isButton}>
             {link.isButton ? (
               <Button size="sm" variant="contained">
                 {link.label}
               </Button>
             ) : (
-              <StyledLink>{link.label}</StyledLink>
+              <StyledLink active={router.pathname === link.url}>{link.label}</StyledLink>
             )}
           </Link>
         ))}
@@ -73,4 +93,4 @@ const Navigation = ({ links, adminToolbarVisible }) => {
   )
 }
 
-export default Navigation
+export default withRouter(Navigation)
