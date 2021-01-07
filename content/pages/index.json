@@ -9,7 +9,7 @@
       "darkModeColorInverse": false,
       "backgroundParallax": false,
       "contentParallax": false,
-      "fullHeight": false,
+      "fullHeight": true,
       "width": "default",
       "textAlign": "center",
       "paddingTop": "xl",
