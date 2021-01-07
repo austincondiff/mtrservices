@@ -42,16 +42,15 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-size: 3.25rem;
+    font-size: 4.25rem;
     line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.025em;
     margin: 0;
   }
 
   h1:not(:last-child) {
-    font-size: 5rem;
     margin-bottom: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.025em;
   }
 
   h3 {

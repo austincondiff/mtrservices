@@ -9,14 +9,14 @@ const NavigationWrap = styled.div`
   z-index: 100;
   height: 64px;
   display: flex;
-  justify-content: center;
+  align-items: center;
 `
 const LogoWrap = styled.div`
   flex: 1;
 `
 const Links = styled.div`
   display: flex;
-  justify-content: center;
+  align-items: center;
   gap: 16px;
 `
 const StyledLink = styled.a`
@@ -30,8 +30,8 @@ const Navigation = ({ links, adminToolbarVisible }) => {
       <LogoWrap>Logo here</LogoWrap>
       <Links>
         {links?.map((link, i) => (
-          <Link href={`${link?.url || null}`} key={`navLink-${i}`} passHref>
-            <StyledLink>{link.label}</StyledLink>
+          <Link href={`${link?.url || null}`} key={`navLink-${i}`} passHref={!link.isButton}>
+            {link.isButton ? <button>{link.label}</button> : <StyledLink>{link.label}</StyledLink>}
           </Link>
         ))}
       </Links>

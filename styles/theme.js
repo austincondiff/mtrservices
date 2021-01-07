@@ -1,9 +1,9 @@
 const theme = {
   color: {
     transparent: 'transparent',
-    white: 'white',
-    neutral: 'gray',
-    black: 'black',
+    white: '#ffffff',
+    neutral: '#808080',
+    black: '#000000',
     primaryLight: '#bfe7ff',
     primary: '#0078e2',
     primaryDark: '#090D1C',
@@ -16,6 +16,30 @@ const theme = {
     narrow: 960,
     default: 1200,
     wide: 1600,
+  },
+  button: {
+    size: {
+      xs: {
+        height: 32,
+        fontSize: 12,
+      },
+      sm: {
+        height: 40,
+        fontSize: 14,
+      },
+      md: {
+        height: 56,
+        fontSize: 16,
+      },
+      lg: {
+        height: 64,
+        fontSize: 16,
+      },
+      xl: {
+        height: 80,
+        fontSize: 20,
+      },
+    },
   },
   spacing: {
     none: '0',

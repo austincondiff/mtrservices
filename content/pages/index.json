@@ -47,8 +47,8 @@
       ],
       "showScrollIndicator": true,
       "buttonOrientation": "horizontal",
-      "primaryButtonLink": "/contact",
-      "secondaryButtonLink": "/about"
+      "primaryButtonUrl": "/contact",
+      "secondaryButtonUrl": "/about"
     },
     {
       "_template": "paragraph",

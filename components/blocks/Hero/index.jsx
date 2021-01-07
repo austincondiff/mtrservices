@@ -1,10 +1,21 @@
 import React from 'react'
+import Link from 'next/link'
 import styled, { keyframes } from 'styled-components'
 // 1. Import 'BlocksControls'
 import { InlineTextarea, BlocksControls } from 'react-tinacms-inline'
 import Block, { blockFields, blockDefaults } from '../Block'
 import Button, { ButtonGroup } from '@components/common/Button'
 
+const HeroBlock = styled(Block)`
+  p {
+    font-size: 1.5em;
+    color: ${({ color, theme }) => theme.color[color]}cc;
+  }
+`
+const HeroInside = styled.div`
+  max-width: 700px;
+  display: inline-block;
+`
 const StyledButtonGroup = styled(ButtonGroup)`
   margin-top: ${({ theme }) => theme.spacing.lg};
 `
@@ -41,25 +52,33 @@ const Arrow = styled.div`
 
 export function Hero({ data }) {
   return (
-    <Block {...data}>
-      <h1>
-        <InlineTextarea name="headline" />
-      </h1>
-      <p>
-        <InlineTextarea name="subtext" />
-      </p>
-      {(data.primaryButtonLabel || data.secondaryButtonLabel) && (
-        <StyledButtonGroup orientation={data.buttonOrientation === 'vertical' ? 'vertical' : 'horizontal'} gap="sm">
-          {data.primaryButtonLabel && <Button variant="contained">{data.primaryButtonLabel}</Button>}
-          {data.secondaryButtonLabel && (
-            <Button variant={data.buttonOrientation === 'vertical' ? 'ghost' : 'outlined'}>
-              {data.secondaryButtonLabel}
-            </Button>
-          )}
-        </StyledButtonGroup>
-      )}
-      {data.showScrollIndicator && <Arrow />}
-    </Block>
+    <HeroBlock {...data}>
+      <HeroInside>
+        <h1>
+          <InlineTextarea name="headline" />
+        </h1>
+        <p>
+          <InlineTextarea name="subtext" />
+        </p>
+        {(data.primaryButtonLabel || data.secondaryButtonLabel) && (
+          <StyledButtonGroup orientation={data.buttonOrientation === 'vertical' ? 'vertical' : 'horizontal'} gap="sm">
+            {data.primaryButtonLabel && (
+              <Link href={data.primaryButtonUrl || '#'}>
+                <Button variant="contained">{data.primaryButtonLabel}</Button>
+              </Link>
+            )}
+            {data.secondaryButtonLabel && (
+              <Link href={data.secondaryButtonUrl || '#'}>
+                <Button variant={data.buttonOrientation === 'vertical' ? 'ghost' : 'outlined'}>
+                  {data.secondaryButtonLabel}
+                </Button>
+              </Link>
+            )}
+          </StyledButtonGroup>
+        )}
+        {data.showScrollIndicator && <Arrow />}
+      </HeroInside>
+    </HeroBlock>
   )
 }
 
@@ -84,8 +103,8 @@ export const heroBlock = {
         component: 'text',
       },
       {
-        name: 'primaryButtonLink',
-        label: 'Primary Button Link',
+        name: 'primaryButtonUrl',
+        label: 'Primary Button URL',
         component: 'text',
       },
       {
@@ -94,8 +113,8 @@ export const heroBlock = {
         component: 'text',
       },
       {
-        name: 'secondaryButtonLink',
-        label: 'Secondary Button Link',
+        name: 'secondaryButtonUrl',
+        label: 'Secondary Button URL',
         component: 'text',
       },
       {

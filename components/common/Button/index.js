@@ -1,17 +1,20 @@
 import styled from 'styled-components'
+import theme from '@styles/theme'
+
+const buttonHeight = 56
 
 const ButtonWrap = styled.button`
   background: ${({ variant }) =>
     variant === 'contained' ? `linear-gradient(134deg, #F25E1C 0%, #EDC621 100%)` : `transparent`};
-  border-radius: 4px;
+  border-radius: ${({ size, theme }) => theme.button.size[size].height / 2}px;
   color: white;
   font-family: 'Inter', sans-serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: ${({ size, theme }) => theme.button.size[size].fontSize}px;
   letter-spacing: 0.57px;
   text-align: center;
-  line-height: 56px;
-  padding: ${({ theme }) => `0 ${theme.spacing.md}`};
+  height: ${({ size, theme }) => theme.button.size[size].height}px;
+  padding: 0 ${({ size, theme }) => theme.button.size[size].height / 2}px;
   border: 0;
   position: relative;
   cursor: pointer;
@@ -27,8 +30,8 @@ const ButtonWrap = styled.button`
   }
 `
 
-const Button = ({ children, variant = 'ghost', ...props }) => (
-  <ButtonWrap variant={variant} {...props}>
+const Button = ({ children, size = 'md', variant = 'ghost', ...props }) => (
+  <ButtonWrap variant={variant} size={size} {...props}>
     {variant === 'outlined' && (
       <svg
         style={{
@@ -55,7 +58,7 @@ const Button = ({ children, variant = 'ghost', ...props }) => (
           y="1.5"
           width="calc(100% - 3px)"
           height="calc(100% - 3px)"
-          rx="4"
+          rx={theme.button.size[size].height / 2}
         ></rect>
       </svg>
     )}
