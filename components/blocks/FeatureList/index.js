@@ -6,7 +6,11 @@ import Block, { blockFields, blockDefaults } from '../Block'
 
 const FeatureListBlocks = styled(InlineBlocks)`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: ${({ columnCount }) =>
+    Array(columnCount)
+      .fill()
+      .map((item) => `1fr`)
+      .join(' ')};
   grid-gap: 3rem;
   grid-template-rows: auto;
 `
@@ -14,7 +18,13 @@ const FeatureListBlocks = styled(InlineBlocks)`
 function FeatureList({ data }) {
   return (
     <Block {...data}>
-      <FeatureListBlocks name="features" blocks={FEATURE_BLOCKS} direction="row" className="feature-list" max={3} />
+      <FeatureListBlocks
+        name="features"
+        blocks={FEATURE_BLOCKS}
+        direction="row"
+        className="feature-list"
+        columnCount={data.columnCount}
+      />
     </Block>
   )
 }
@@ -33,6 +43,7 @@ export const featureListBlock = {
     label: 'Feature List',
     defaultItem: {
       _template: 'features',
+      columnCount: 3,
       ...blockDefaults,
       features: [
         {
@@ -52,6 +63,13 @@ export const featureListBlock = {
         },
       ],
     },
-    fields: [...blockFields],
+    fields: [
+      {
+        name: 'columnCount',
+        label: 'Number of Columns',
+        component: 'number',
+      },
+      ...blockFields,
+    ],
   },
 }

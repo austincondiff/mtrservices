@@ -26,6 +26,12 @@ export const featureBlock = {
       supporting_copy:
         'Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ',
     },
-    fields: [],
+    fields: [
+      {
+        name: 'icon',
+        label: 'Icon',
+        component: 'text',
+      },
+    ],
   },
 }

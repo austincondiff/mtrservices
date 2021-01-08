@@ -7,20 +7,27 @@ import Logo from '@components/common/Logo'
 
 const NavigationWrap = styled.div`
   position: fixed;
-  top: ${({ adminToolbarVisible }) => (adminToolbarVisible ? 62 : 0)}px;
+  top: ${({ adminToolbarVisible }) => (adminToolbarVisible ? `var(--tina-toolbar-height)` : 0)}px;
   left: 0;
   right: 0;
   z-index: 100;
-  height: 80px;
+  height: ${({ condensed, theme }) => (condensed ? 64 : 96)}px;
   display: flex;
   align-items: center;
   padding: 0 24px;
-  background-color: ${({ hasBackground, theme }) => (hasBackground ? theme.color.white : theme.color.transparent)};
-  box-shadow: ${({ hasBackground, theme }) =>
-    hasBackground ? `0 4px 16px 0 rgba(0,0,0,0.15)` : `0 0 0 0 ${theme.color.transparent}`};
-  transition: 250ms;
+  border-bottom: ${({ transparent, borderWhenTransparent, dark, theme }) =>
+    transparent && borderWhenTransparent
+      ? `1px solid ${dark ? theme.color.white : theme.color.black}33`
+      : `0 solid ${theme.color.transparent}`};
+  background-color: ${({ transparent, theme }) => (transparent ? theme.color.transparent : theme.color.white)};
+  box-shadow: ${({ transparent, theme }) =>
+    transparent ? `0 0 0 0 ${theme.color.transparent}` : `0 4px 16px 0 rgba(0,0,0,0.15)`};
+  transition: box-shadow 250ms, background-color 250ms, height 250ms, border 250ms, left 150ms ease-out;
   a {
     color: ${({ dark, theme }) => (dark ? theme.color.white : theme.color.black)};
+  }
+  [open] > & {
+    left: var(--tina-sidebar-width);
   }
 `
 const LogoWrap = styled.div`
@@ -48,7 +55,12 @@ const StyledLink = styled.a`
     left: 0;
     right: 0;
     height: 3px;
-    background: ${({ active }) => (active ? `linear-gradient(90deg, #f25e1c 0%, #edc621 100%)` : `transparent`)};
+    background: linear-gradient(90deg, #f25e1c 0%, #edc621 100%);
+    transform: scaleX(${({ active }) => (active ? 1 : 0)});
+    transition: 250ms;
+  }
+  &:hover:after {
+    transform: scaleX(1);
   }
 `
 
@@ -72,7 +84,13 @@ const Navigation = ({ links, adminToolbarVisible, router }) => {
   }, [])
 
   return (
-    <NavigationWrap adminToolbarVisible={adminToolbarVisible} hasBackground={scrolled} dark={!scrolled}>
+    <NavigationWrap
+      adminToolbarVisible={adminToolbarVisible}
+      condensed={scrolled}
+      transparent={!scrolled}
+      borderWhenTransparent
+      dark={!scrolled}
+    >
       <LogoWrap>
         <Logo dark={!scrolled} />
       </LogoWrap>

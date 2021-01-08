@@ -50,6 +50,10 @@ const Arrow = styled.div`
   } */
 `
 
+const BreakCharacters = ({ children }) => {
+  return <>{typeof children === 'string' ? children.map((char) => <span>{char}</span>) : children}</>
+}
+
 export function Hero({ data }) {
   return (
     <HeroBlock {...data}>
