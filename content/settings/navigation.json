@@ -17,16 +17,17 @@
       "url": "/contact"
     },
     {
+      "label": "Get a Quote",
+      "url": "/contact?method=quote",
+      "isButton": false
+    },
+    {
       "color": "transparent",
       "opacity": 1,
       "position": 0,
       "label": "Get Support",
       "url": "http://support.mtrservices.com/download_client_connector?id=2&name=Mark+Condiff",
-      "newWindow": true
-    },
-    {
-      "label": "Get a Quote",
-      "url": "/contact?method=quote",
+      "newWindow": true,
       "isButton": true
     }
   ]
