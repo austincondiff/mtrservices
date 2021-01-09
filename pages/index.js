@@ -10,50 +10,65 @@ import { heroBlock } from '@components/blocks/Hero'
 import { paragraphBlock } from '@components/blocks/Paragraph'
 import slugify from 'react-slugify'
 
-// const CreatePageButton = createRemarkButton({
-//   label: 'New Page',
-//   filename(form) {
-//     let slug = slugify(form.title.toLowerCase())
-
-//     return `content/pages/${slug}.json`
-//   },
-//   frontmatter(form) {
-//     let slug = slugify(form.title.toLowerCase())
-
-//     return new Promise((resolve) => {
-//       resolve({
-//         title: form.title,
-//         description: form.description,
-//         date: new Date(),
-//         path: `content/pages/${slug}`,
-//       })
-//     })
-//   },
+// const PageCreatorPlugin = {
+//   __type: 'content-creator',
 //   fields: [
+//     {
+//       label: 'Title',
+//       name: 'title',
+//       component: 'text',
+//       validation(title) {
+//         if (!title) return 'Required.'
+//       },
+//     },
 //     { name: 'title', label: 'Title', component: 'text', required: true },
 //     { name: 'description', label: 'Description', component: 'text', required: true },
 //   ],
-// })
-
-const PageCreatorPlugin = {
+//   onSubmit(values, cms) {
+//     // Call functions that create the new blog post. For example:
+//     // cms.apis.someBackend.createPost(values)
+//   },
+// }
+const CreatePageButton = {
   __type: 'content-creator',
+  label: 'New Page',
+  filename: (form) => {
+    let slug = slugify(form.title.toLowerCase())
+
+    return `content/pages/${slug}.json`
+  },
+  data: (form) => {
+    let slug = slugify(form.title.toLowerCase())
+
+    return new Promise((resolve) => {
+      resolve({
+        title: form.title,
+        description: form.description,
+        date: new Date(),
+        slug,
+      })
+    })
+  },
   fields: [
-    {
-      label: 'Title',
-      name: 'title',
-      component: 'text',
-      validation(title) {
-        if (!title) return 'Required.'
-      },
-    },
     { name: 'title', label: 'Title', component: 'text', required: true },
     { name: 'description', label: 'Description', component: 'text', required: true },
   ],
-  onSubmit(values, cms) {
-    // Call functions that create the new blog post. For example:
-    // cms.apis.someBackend.createPost(values)
-  },
 }
+
+// const CreatePagePlugin = new JsonCreatorPlugin({
+//   label: 'New Page',
+//   filename: (form) => {
+//     return `content/pages/${form.slug}.json`
+//   },
+//   fields: [
+//     { name: 'title', label: 'Title', component: 'text', required: true },
+//     { name: 'slug', label: 'Slug', component: 'text', required: true },
+//   ],
+//   onSubmit(values, cms) {
+//     // Call functions that create the new blog post. For example:
+//     // cms.apis.someBackend.createPost(values)
+//   },
+// })
 
 export default function Home({ file, themeFile, navigationFile, siteFile, preview }) {
   const formOptions = {
@@ -126,7 +141,7 @@ export default function Home({ file, themeFile, navigationFile, siteFile, previe
   const [navigation, navigationForm] = useGithubJsonForm(navigationFile, navigationFormOptions)
   const [site, siteForm] = useGithubJsonForm(siteFile, siteFormOptions)
 
-  usePlugins([form])
+  usePlugins([form, CreatePageButton])
   useFormScreenPlugin(themeForm)
   useFormScreenPlugin(navigationForm)
   useFormScreenPlugin(siteForm)
