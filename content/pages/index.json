@@ -68,24 +68,6 @@
           "background": "transparent",
           "columns": [
             {
-              "_template": "heading",
-              "supertitle": "Supertitle goes here",
-              "title": "Title goes here",
-              "subtitle": "Subtitle goes here"
-            }
-          ]
-        },
-        {
-          "_template": "stack",
-          "gap": "md",
-          "direction": "vertical",
-          "distribute": "center",
-          "align": "center",
-          "padding": 0,
-          "radius": 0,
-          "background": "transparent",
-          "columns": [
-            {
               "_template": "paragraph",
               "text": "At MTR Services, we are committed to giving our customers the most expert-level service possible so business operation is seamless. We understand that time is money and every moment down is another dollar lost. Our goal is to not only keep our clients and employees up and running but to create a technical landscape for our customers that fits their business objectives, not the other way around. "
             }
