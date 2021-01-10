@@ -54,8 +54,8 @@
   "sections": [
     {
       "_template": "section",
-      "paddingTop": "md",
-      "paddingBottom": "md",
+      "paddingTop": "sm",
+      "paddingBottom": "sm",
       "section": [
         {
           "_template": "stack",
@@ -69,7 +69,7 @@
           "columns": [
             {
               "_template": "paragraph",
-              "text": "Start building the page here."
+              "text": "At MTR Services, we are committed to giving our customers the most expert-level service possible so business operation is seamless. We understand that time is money and every moment down is another dollar lost. Our goal is to not only keep our clients and employees up and running but to create a technical landscape for our customers that fits their business objectives, not the other way around. "
             }
           ]
         }
