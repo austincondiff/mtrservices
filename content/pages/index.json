@@ -53,6 +53,11 @@
   ],
   "blocks": [
     {
+      "_template": "section",
+      "paddingTop": "md",
+      "paddingBottom": "md"
+    },
+    {
       "_template": "paragraph",
       "color": "black",
       "backgroundColor": "white",
