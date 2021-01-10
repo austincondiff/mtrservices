@@ -49,6 +49,14 @@ const theme = {
     lg: '64px',
     xl: '128px',
   },
+  radius: {
+    none: '0',
+    xs: 2,
+    sm: 4,
+    md: 8,
+    lg: 16,
+    xl: 20,
+  },
   verticalSpacing: {
     none: '0',
     xs: '4vh',

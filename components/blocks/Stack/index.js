@@ -16,6 +16,15 @@ export const Stack = styled(InlineBlocks)`
   text-align: ${({ textAlign }) => textAlign};
   color: ${({ color, theme }) => theme.color[color]};
   background-color: ${({ backgroundColor, theme }) => theme.color[backgroundColor]};
+  ${({ paddingTop, paddingRight, paddingBottom, paddingLeft, theme }) =>
+    paddingTop || paddingRight || paddingBottom || paddingLeft
+      ? `padding: 
+      ${theme.spacing[paddingTop] || 0} 
+      ${theme.spacing[paddingRight] || 0} 
+      ${theme.spacing[paddingBottom] || 0} 
+      ${theme.spacing[paddingLeft] || 0};`
+      : ``}
+  ${({ radius }) => (radius ? `border-radius: ${theme.radius[radius]}px;` : ``)}
 `
 
 export const BackgroundImage = styled.div`
@@ -174,6 +183,36 @@ export const stackFields = [
     label: 'Background Image/Video Opacity',
     component: 'number',
     step: 0.01,
+  },
+  {
+    name: 'paddingTop',
+    label: 'Padding Top',
+    component: 'select',
+    options: sizes,
+  },
+  {
+    name: 'paddingRight',
+    label: 'Padding Right',
+    component: 'select',
+    options: sizes,
+  },
+  {
+    name: 'paddingBottom',
+    label: 'Padding Bottom',
+    component: 'select',
+    options: sizes,
+  },
+  {
+    name: 'paddingLeft',
+    label: 'Padding Left',
+    component: 'select',
+    options: sizes,
+  },
+  {
+    name: 'radius',
+    label: 'Radius',
+    component: 'select',
+    options: sizes,
   },
   {
     name: 'backgroundParallax',

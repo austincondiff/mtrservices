@@ -159,8 +159,8 @@ export default function Home({ file, themeFile, navigationFile, siteFile, previe
       </Head>
       <InlineForm form={form}>
         <main>
-          <InlineBlocks name="hero" blocks={HERO_BLOCKS} max={1} />
-          <InlineBlocks name="blocks" blocks={HOME_BLOCKS} />
+          <InlineBlocks name="hero" blocks={HERO_BLOCKS} min={1} max={1} />
+          <InlineBlocks name="sections" blocks={HOME_BLOCKS} min={1} />
         </main>
       </InlineForm>
       <Footer />

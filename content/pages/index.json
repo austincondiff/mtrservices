@@ -51,7 +51,7 @@
       "secondaryButtonUrl": "/about"
     }
   ],
-  "blocks": [
+  "sections": [
     {
       "_template": "section",
       "paddingTop": "md",

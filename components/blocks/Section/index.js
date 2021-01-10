@@ -88,7 +88,7 @@ export default Section
 
 export const sectionBlock = {
   Component: ({ index, data }) => (
-    <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
+    <BlocksControls index={index} focusRing={{ offset: 0, borderRadius: 0 }} insetControls>
       <Section {...data}>
         <SectionStack
           name="section"
