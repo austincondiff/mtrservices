@@ -2,6 +2,7 @@ import theme from '@styles/theme'
 import styled from 'styled-components'
 import { BlocksControls, InlineBlocks } from 'react-tinacms-inline'
 import { sizes, colors } from '@utils/formOptions'
+import { featureListBlock } from '../FeatureList'
 import { featureBlock } from '../FeatureList/Feature'
 import { headingBlock } from '../Heading'
 import { paragraphBlock } from '../Paragraph'
@@ -259,6 +260,7 @@ export const stackBlock = {
 const STACK_BLOCKS = {
   stack: stackBlock,
   feature: featureBlock,
+  features: featureListBlock,
   heading: headingBlock,
   paragraph: paragraphBlock,
 }
