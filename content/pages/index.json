@@ -55,7 +55,28 @@
     {
       "_template": "section",
       "paddingTop": "md",
-      "paddingBottom": "md"
+      "paddingBottom": "md",
+      "section": [
+        {
+          "_template": "stack",
+          "gap": "md",
+          "direction": "vertical",
+          "distribute": "center",
+          "align": "center",
+          "padding": 0,
+          "radius": 0,
+          "background": "transparent",
+          "columns": [
+            {
+              "_template": "paragraph",
+              "text": "Start building the page here."
+            }
+          ]
+        }
+      ],
+      "direction": "horizontal",
+      "gap": "md",
+      "color": "dark"
     },
     {
       "_template": "paragraph",
