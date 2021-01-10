@@ -16,7 +16,7 @@ const HeroInside = styled.div`
   display: inline-block;
 `
 const StyledButtonGroup = styled(ButtonGroup)`
-  margin-top: ${({ theme }) => theme.spacing.lg};
+  margin-top: ${({ theme }) => theme.spacing.lg}px;
 `
 
 const arrowBounce = keyframes`

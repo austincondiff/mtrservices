@@ -70,6 +70,6 @@ export default Button
 
 export const ButtonGroup = styled.div`
   display: inline-flex;
-  gap: ${({ gap = 'md', theme }) => theme.spacing[gap]};
+  gap: ${({ gap = 'md', theme }) => theme.spacing[gap] || 0}px;
   flex-direction: ${({ orientation }) => (orientation === 'vertical' ? `column` : ``)};
 `

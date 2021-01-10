@@ -17,7 +17,7 @@ function Paragraph({ data }) {
 
 export const paragraphBlock = {
   Component: ({ index, data }) => (
-    <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
+    <BlocksControls index={index} focusRing={{ offset: 0 }}>
       <Paragraph data={data} />
     </BlocksControls>
   ),

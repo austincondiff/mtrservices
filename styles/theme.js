@@ -43,11 +43,11 @@ const theme = {
   },
   spacing: {
     none: '0',
-    xs: '8px',
-    sm: '16px',
-    md: '32px',
-    lg: '64px',
-    xl: '128px',
+    xs: 8,
+    sm: 16,
+    md: 32,
+    lg: 64,
+    xl: 128,
   },
   radius: {
     none: '0',

@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import { BlocksControls, InlineBlocks } from 'react-tinacms-inline'
 import { sizes, colors } from '@utils/formOptions'
 import { featureBlock } from '../FeatureList/Feature'
+import { headingBlock } from '../Heading'
 import { paragraphBlock } from '../Paragraph'
 
 export const Stack = styled(InlineBlocks)`
   display: flex;
-  gap: ${({ gap, theme }) => `${theme.spacing[gap] || 0}`};
+  gap: ${({ gap, theme }) => theme.spacing[gap] || 0}px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -19,10 +20,10 @@ export const Stack = styled(InlineBlocks)`
   ${({ paddingTop, paddingRight, paddingBottom, paddingLeft, theme }) =>
     paddingTop || paddingRight || paddingBottom || paddingLeft
       ? `padding: 
-      ${theme.spacing[paddingTop] || 0} 
-      ${theme.spacing[paddingRight] || 0} 
-      ${theme.spacing[paddingBottom] || 0} 
-      ${theme.spacing[paddingLeft] || 0};`
+      ${theme.spacing[paddingTop] || 0}px 
+      ${theme.spacing[paddingRight] || 0}px 
+      ${theme.spacing[paddingBottom] || 0}px 
+      ${theme.spacing[paddingLeft] || 0}px;`
       : ``}
   ${({ radius }) => (radius ? `border-radius: ${theme.radius[radius]}px;` : ``)}
 `
@@ -238,7 +239,7 @@ export const stackFields = [
 
 export const stackBlock = {
   Component: ({ index, data }) => (
-    <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
+    <BlocksControls index={index}>
       <Stack {...data} name="columns" direction={data.direction} blocks={STACK_BLOCKS}>
         {data.backgroundImage && !data.backgroundVideo && <BackgroundImage {...data} />}
         {data.backgroundVideo && <BackgroundVideo {...data} />}
@@ -258,6 +259,6 @@ export const stackBlock = {
 const STACK_BLOCKS = {
   stack: stackBlock,
   feature: featureBlock,
-  // header: headerBlock,
+  heading: headingBlock,
   paragraph: paragraphBlock,
 }

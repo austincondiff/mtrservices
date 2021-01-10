@@ -62,7 +62,7 @@ const SectionWrap = styled.section`
   color: ${({ color, theme }) => theme.color[color]};
   background-color: ${({ backgroundColor, theme }) => theme.color[backgroundColor]};
   ${({ fullHeight }) => (fullHeight ? `height: 100vh;` : ``)}
-  gap: ${({ gap, theme }) => `${theme.spacing[gap] || 0}`};
+  gap: ${({ gap, theme }) => theme.spacing[gap] || 0}px;
 `
 const ContentWrap = styled.div`
   width: 100%;
