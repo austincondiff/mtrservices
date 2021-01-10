@@ -80,6 +80,61 @@
       "textAlign": "center"
     },
     {
+      "_template": "section",
+      "color": "white",
+      "backgroundColor": "primary",
+      "darkModeColorInverse": true,
+      "backgroundParallax": false,
+      "contentParallax": false,
+      "fullHeight": false,
+      "width": "default",
+      "textAlign": "left",
+      "paddingTop": "md",
+      "paddingBottom": "md",
+      "gap": "md",
+      "align": "center",
+      "direction": "vertical",
+      "distribute": "center",
+      "padding": 0,
+      "radius": 0,
+      "background": "transparent",
+      "section": [
+        {
+          "_template": "stack",
+          "gap": "md",
+          "direction": "vertical",
+          "distribute": "center",
+          "align": "center",
+          "padding": 0,
+          "radius": 0,
+          "background": "transparent",
+          "columns": [
+            {
+              "_template": "features",
+              "columnCount": 3,
+              "features": [
+                {
+                  "_template": "feature",
+                  "heading": "IT Consulting",
+                  "supporting_copy": "We plan, strategize, and develop network architecture and technical infrastructure. From project inception to completion, we will work side by side with management and IT staff to insure an efficient, custom solution for your technical goals."
+                },
+                {
+                  "_template": "feature",
+                  "heading": "Network Management",
+                  "supporting_copy": "From a virtual IT department to 24/7 helpdesk support, we keep your network and computers running at optimal performance levels for seamless business operation."
+                },
+                {
+                  "_template": "feature",
+                  "heading": "Telephone Systems",
+                  "supporting_copy": "Communication is integral in any business. That is why we can provide the most reliable, top of the line IP phone systems to get you talking in no time."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
       "_template": "paragraph",
       "color": "black",
       "backgroundColor": "white",
