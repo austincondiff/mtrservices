@@ -91,7 +91,7 @@
       "textAlign": "left",
       "paddingTop": "md",
       "paddingBottom": "md",
-      "gap": "md",
+      "gap": "lg",
       "align": "center",
       "direction": "vertical",
       "distribute": "center",
@@ -99,6 +99,23 @@
       "radius": 0,
       "background": "transparent",
       "section": [
+        {
+          "_template": "stack",
+          "gap": "md",
+          "direction": "vertical",
+          "distribute": "center",
+          "align": "center",
+          "padding": 0,
+          "radius": 0,
+          "background": "transparent",
+          "columns": [
+            {
+              "_template": "heading",
+              "title": "Services we offer"
+            }
+          ],
+          "textAlign": "center"
+        },
         {
           "_template": "stack",
           "gap": "md",
