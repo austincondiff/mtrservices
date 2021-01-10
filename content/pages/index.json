@@ -1,7 +1,7 @@
 {
   "title": "MTR Services",
   "body": "We are undergoing website maintenance. Please come back soon.",
-  "blocks": [
+  "hero": [
     {
       "_template": "hero",
       "color": "white",
@@ -49,7 +49,9 @@
       "buttonOrientation": "horizontal",
       "primaryButtonUrl": "/contact",
       "secondaryButtonUrl": "/about"
-    },
+    }
+  ],
+  "blocks": [
     {
       "_template": "paragraph",
       "color": "black",

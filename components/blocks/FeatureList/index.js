@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { BlocksControls, InlineBlocks } from 'react-tinacms-inline'
 import { featureBlock } from './Feature'
-import Block, { blockFields, blockDefaults } from '../Block'
 
 const FeatureListBlocks = styled(InlineBlocks)`
   display: grid;
@@ -17,15 +16,13 @@ const FeatureListBlocks = styled(InlineBlocks)`
 
 function FeatureList({ data }) {
   return (
-    <Block {...data}>
-      <FeatureListBlocks
-        name="features"
-        blocks={FEATURE_BLOCKS}
-        direction="row"
-        className="feature-list"
-        columnCount={data.columnCount}
-      />
-    </Block>
+    <FeatureListBlocks
+      name="features"
+      blocks={FEATURE_BLOCKS}
+      direction="row"
+      className="feature-list"
+      columnCount={data.columnCount}
+    />
   )
 }
 
@@ -44,7 +41,6 @@ export const featureListBlock = {
     defaultItem: {
       _template: 'features',
       columnCount: 3,
-      ...blockDefaults,
       features: [
         {
           _template: 'feature',
@@ -69,7 +65,6 @@ export const featureListBlock = {
         label: 'Number of Columns',
         component: 'number',
       },
-      ...blockFields,
     ],
   },
 }

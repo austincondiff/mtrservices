@@ -5,6 +5,7 @@ import { InlineForm, InlineBlocks, InlineTextarea } from 'react-tinacms-inline'
 import { useFormScreenPlugin, usePlugins } from 'tinacms'
 import Footer from '@components/common/Footer'
 import PageLayout from '@components/common/PageLayout'
+import { sectionBlock } from '@components/blocks/Section'
 import { featureListBlock } from '@components/blocks/FeatureList'
 import { heroBlock } from '@components/blocks/Hero'
 import { paragraphBlock } from '@components/blocks/Paragraph'
@@ -53,6 +54,10 @@ const CreatePageButton = {
     { name: 'title', label: 'Title', component: 'text', required: true },
     { name: 'description', label: 'Description', component: 'text', required: true },
   ],
+  onSubmit: (form) => {
+    console.log({ form })
+    git
+  },
 }
 
 // const CreatePagePlugin = new JsonCreatorPlugin({
@@ -154,6 +159,7 @@ export default function Home({ file, themeFile, navigationFile, siteFile, previe
       </Head>
       <InlineForm form={form}>
         <main>
+          <InlineBlocks name="hero" blocks={HERO_BLOCKS} max={1} />
           <InlineBlocks name="blocks" blocks={HOME_BLOCKS} />
         </main>
       </InlineForm>
@@ -225,8 +231,9 @@ export const getStaticProps = async function ({ preview, previewData, ...ctx }) 
   }
 }
 
-const HOME_BLOCKS = {
+const HERO_BLOCKS = {
   hero: heroBlock,
-  features: featureListBlock,
-  paragraph: paragraphBlock,
+}
+const HOME_BLOCKS = {
+  section: sectionBlock,
 }

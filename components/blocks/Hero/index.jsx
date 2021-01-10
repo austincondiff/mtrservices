@@ -1,12 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 import styled, { keyframes } from 'styled-components'
-// 1. Import 'BlocksControls'
 import { InlineTextarea, BlocksControls } from 'react-tinacms-inline'
-import Block, { blockFields, blockDefaults } from '../Block'
+import Section, { sectionFields, sectionDefaults } from '../Section'
 import Button, { ButtonGroup } from '@components/common/Button'
 
-const HeroBlock = styled(Block)`
+const HeroBlock = styled(Section)`
   p {
     font-size: 1.5em;
     color: ${({ color, theme }) => theme.color[color]}cc;
@@ -95,7 +94,7 @@ export const heroBlock = {
   template: {
     label: 'Hero',
     defaultItem: {
-      ...blockDefaults,
+      ...sectionDefaults,
       headline: 'The quick brown fox jumped over the lazy dog.',
       subtext: 'The quick brown fox jumped over the lazy dog.',
       align: 'center',
@@ -135,7 +134,7 @@ export const heroBlock = {
         label: 'Show Scroll Indicator',
         component: 'toggle',
       },
-      ...blockFields,
+      ...sectionFields,
     ],
   },
 }
