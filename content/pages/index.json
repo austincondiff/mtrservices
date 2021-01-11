@@ -81,8 +81,8 @@
     },
     {
       "_template": "section",
-      "color": "white",
-      "backgroundColor": "primary",
+      "color": "black",
+      "backgroundColor": "transparent",
       "darkModeColorInverse": true,
       "backgroundParallax": false,
       "contentParallax": false,
@@ -111,10 +111,12 @@
           "columns": [
             {
               "_template": "heading",
-              "title": "Services we offer"
+              "title": "Services we offer",
+              "subtitle": "We provide IT solutions so you can focus on your business.",
+              "supertitle": "The best solutions for the toughest problems"
             }
           ],
-          "textAlign": "center"
+          "textAlign": "left"
         },
         {
           "_template": "stack",
