@@ -189,7 +189,7 @@
         },
         {
           "_template": "stack",
-          "gap": "md",
+          "gap": "lg",
           "direction": "vertical",
           "distribute": "center",
           "align": "start",
