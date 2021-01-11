@@ -56,6 +56,7 @@ import Mail from './icons/Mail'
 import MapPin from './icons/MapPin'
 import Maximize from './icons/Maximize'
 import Menu from './icons/Menu'
+import MessageSquare from './icons/MessageSquare'
 import Minimize from './icons/Minimize'
 import Moon from './icons/Moon'
 import MoreHorizontal from './icons/MoreHorizontal'
@@ -66,6 +67,7 @@ import Netlify from './icons/Netlify'
 import NumberedList from './icons/NumberedList'
 import Package from './icons/Package'
 import Paperclip from './icons/Paperclip'
+import Phone from './icons/Phone'
 import PieChart from './icons/PieChart'
 import Pin from './icons/Pin'
 import PlusCircle from './icons/PlusCircle'
@@ -77,6 +79,7 @@ import Search from './icons/Search'
 import Server from './icons/Server'
 import Settings from './icons/Settings'
 import Share2 from './icons/Share2'
+import Shield from './icons/Shield'
 import ShoppingCart from './icons/ShoppingCart'
 import Sidebar from './icons/Sidebar'
 import Star from './icons/Star'
@@ -150,6 +153,7 @@ export const iconComponents = {
   mail: Mail,
   'map-pin': MapPin,
   maximize: Maximize,
+  'message-square': MessageSquare,
   menu: Menu,
   minimize: Minimize,
   moon: Moon,
@@ -162,6 +166,7 @@ export const iconComponents = {
   package: Package,
   paperclip: Paperclip,
   'pie-chart': PieChart,
+  phone: Phone,
   pin: Pin,
   'plus-circle': PlusCircle,
   plus: Plus,
@@ -173,6 +178,7 @@ export const iconComponents = {
   settings: Settings,
   'share-2': Share2,
   'shopping-cart': ShoppingCart,
+  shield: Shield,
   sidebar: Sidebar,
   star: Star,
   sun: Sun,
@@ -186,7 +192,7 @@ export const iconComponents = {
   workflow: Workflow,
   x: X,
   zap: Zap,
-};
+}
 
 const Icon = ({ name, ...props }) => {
   const IconComponent = iconComponents[name] || iconComponents.x

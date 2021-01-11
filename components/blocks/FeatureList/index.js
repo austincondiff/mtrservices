@@ -12,6 +12,7 @@ const FeatureListBlocks = styled(InlineBlocks)`
       .join(' ')};
   grid-gap: 3rem;
   grid-template-rows: auto;
+  width: 100%;
 `
 
 function FeatureList({ data }) {

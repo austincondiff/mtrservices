@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { BlocksControls, InlineTextarea } from 'react-tinacms-inline'
 
 const HeadingWrap = styled.div`
+  width: 100%;
   & > * {
     margin: 0;
     margin-bottom: ${({ theme }) => theme.spacing.sm}px;
