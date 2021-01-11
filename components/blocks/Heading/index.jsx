@@ -5,7 +5,7 @@ import { BlocksControls, InlineTextarea } from 'react-tinacms-inline'
 const HeadingWrap = styled.div`
   & > * {
     margin: 0;
-    margin-bottom: ${({ theme }) => theme.spacing.xs}px;
+    margin-bottom: ${({ theme }) => theme.spacing.sm}px;
     &:last-child {
       margin-bottom: 0;
     }
@@ -15,11 +15,11 @@ const Supertitle = styled.span`
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 2px;
-  line-height: calc(1em + ${({ theme }) => theme.spacing.xs * 2}px);
-  max-height: calc(1em + ${({ theme }) => theme.spacing.xs * 2}px);
+  padding: 0 ${({ theme }) => theme.spacing.sm}px;
+  line-height: 40px;
+  max-height: calc(1em + ${({ theme }) => theme.spacing.sm * 2}px);
   color: ${({ theme }) => theme.color.primary};
   background-color: ${({ theme }) => theme.color.primary}11;
-  padding: 0 ${({ theme }) => theme.spacing.xs}px;
   text-transform: uppercase;
   display: inline-block;
   border-radius: ${({ theme }) => theme.radius.sm}px;

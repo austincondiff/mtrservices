@@ -1,10 +1,27 @@
 import React from 'react'
+import styled from 'styled-components'
 import { BlocksControls, InlineTextarea } from 'react-tinacms-inline'
+import Icon, { iconComponents } from '@components/common/Icon'
 
-function Feature({ index }) {
+const IconWrap = styled.div`
+  display: inline-block;
+  padding: ${({ theme }) => theme.spacing.xs}px;
+  margin-bottom: ${({ theme }) => theme.spacing.xs}px;
+  color: ${({ theme }) => theme.color.primary};
+  background-color: ${({ theme }) => theme.color.primary}18;
+  border-radius: ${({ theme }) => theme.radius.md}px;
+  font-size: 0;
+`
+
+function Feature({ data, index }) {
   return (
     <BlocksControls index={index}>
       <div className="feature">
+        {data.icon && (
+          <IconWrap>
+            <Icon size="lg" name={data.icon} />
+          </IconWrap>
+        )}
         <h3>
           <InlineTextarea name="heading" focusRing={false} />
         </h3>
@@ -30,7 +47,8 @@ export const featureBlock = {
       {
         name: 'icon',
         label: 'Icon',
-        component: 'text',
+        component: 'select',
+        options: Object.keys(iconComponents).map((key) => ({ label: key.replace('-', ' '), value: key })),
       },
     ],
   },
