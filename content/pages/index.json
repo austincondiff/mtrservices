@@ -77,7 +77,8 @@
       "direction": "vertical",
       "gap": "md",
       "color": "dark",
-      "textAlign": "center"
+      "textAlign": "center",
+      "backgroundColor": "light"
     },
     {
       "_template": "section",
