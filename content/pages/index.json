@@ -233,7 +233,10 @@
             },
             {
               "_template": "button",
-              "label": "Button"
+              "label": "Learn More",
+              "color": "primary",
+              "size": "md",
+              "variant": "outlined"
             }
           ]
         }
