@@ -137,19 +137,19 @@
                   "_template": "feature",
                   "heading": "IT Consulting",
                   "supporting_copy": "We plan, strategize, and develop network architecture and technical infrastructure. From project inception to completion, we will work side by side with management and IT staff to insure an efficient, custom solution for your technical goals.",
-                  "icon": "message-square"
+                  "icon": "at-sign"
                 },
                 {
                   "_template": "feature",
                   "heading": "Network Management",
                   "supporting_copy": "From a virtual IT department to 24/7 helpdesk support, we keep your network and computers running at optimal performance levels for seamless business operation.",
-                  "icon": "share-2"
+                  "icon": "users"
                 },
                 {
                   "_template": "feature",
                   "heading": "Telephone Systems",
                   "supporting_copy": "Communication is integral in any business. That is why we can provide the most reliable, top of the line IP phone systems to get you talking in no time.",
-                  "icon": "phone"
+                  "icon": "pin"
                 }
               ]
             }
@@ -192,7 +192,7 @@
           "gap": "md",
           "direction": "vertical",
           "distribute": "center",
-          "align": "center",
+          "align": "start",
           "padding": 0,
           "radius": 0,
           "background": "transparent",
@@ -230,6 +230,10 @@
                   "text": "Take root and flourish quis nostrum exercitationem ullam corporis suscipit laboriosam culture Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur descended from astronomers encyclopaedia galactica? \n\nNisi ut aliquid ex ea commodi consequatur something incredible is waiting to be known sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem "
                 }
               ]
+            },
+            {
+              "_template": "button",
+              "label": "Button"
             }
           ]
         }
