@@ -135,17 +135,20 @@
                 {
                   "_template": "feature",
                   "heading": "IT Consulting",
-                  "supporting_copy": "We plan, strategize, and develop network architecture and technical infrastructure. From project inception to completion, we will work side by side with management and IT staff to insure an efficient, custom solution for your technical goals."
+                  "supporting_copy": "We plan, strategize, and develop network architecture and technical infrastructure. From project inception to completion, we will work side by side with management and IT staff to insure an efficient, custom solution for your technical goals.",
+                  "icon": "at-sign"
                 },
                 {
                   "_template": "feature",
                   "heading": "Network Management",
-                  "supporting_copy": "From a virtual IT department to 24/7 helpdesk support, we keep your network and computers running at optimal performance levels for seamless business operation."
+                  "supporting_copy": "From a virtual IT department to 24/7 helpdesk support, we keep your network and computers running at optimal performance levels for seamless business operation.",
+                  "icon": "users"
                 },
                 {
                   "_template": "feature",
                   "heading": "Telephone Systems",
-                  "supporting_copy": "Communication is integral in any business. That is why we can provide the most reliable, top of the line IP phone systems to get you talking in no time."
+                  "supporting_copy": "Communication is integral in any business. That is why we can provide the most reliable, top of the line IP phone systems to get you talking in no time.",
+                  "icon": "pin"
                 }
               ]
             }
