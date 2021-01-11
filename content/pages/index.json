@@ -92,7 +92,7 @@
       "paddingTop": "md",
       "paddingBottom": "md",
       "gap": "lg",
-      "align": "center",
+      "align": "start",
       "direction": "vertical",
       "distribute": "center",
       "padding": 0,
