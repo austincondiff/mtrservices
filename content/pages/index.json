@@ -392,16 +392,40 @@
           "background": "transparent",
           "columns": [
             {
-              "_template": "paragraph",
-              "text": "Take root and flourish quis nostrum exercitationem ullam corporis suscipit laboriosam culture Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur descended from astronomers encyclopaedia galactica? Nisi ut aliquid ex ea commodi consequatur something incredible is waiting to be known sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem "
+              "_template": "stack",
+              "gap": "md",
+              "direction": "vertical",
+              "distribute": "center",
+              "align": "center",
+              "padding": 0,
+              "radius": 0,
+              "background": "transparent",
+              "columns": [
+                {
+                  "_template": "heading",
+                  "title": "Get started with MTR Services today",
+                  "subtitle": "Find your new technological bliss. Get your free quote now!"
+                }
+              ]
+            },
+            {
+              "_template": "stack",
+              "gap": "md",
+              "direction": "vertical",
+              "distribute": "center",
+              "align": "center",
+              "padding": 0,
+              "radius": 0,
+              "background": "transparent"
             }
           ],
           "backgroundColor": "primary",
-          "paddingTop": "md",
-          "paddingBottom": "md",
-          "paddingRight": "md",
-          "paddingLeft": "md",
-          "color": "white"
+          "paddingTop": "lg",
+          "paddingBottom": "lg",
+          "paddingRight": "lg",
+          "paddingLeft": "lg",
+          "color": "white",
+          "textAlign": "center"
         }
       ]
     },
