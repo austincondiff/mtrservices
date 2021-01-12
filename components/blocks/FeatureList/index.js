@@ -20,7 +20,7 @@ function FeatureList({ data }) {
     <FeatureListBlocks
       name="features"
       blocks={FEATURE_BLOCKS}
-      direction="row"
+      direction="horizontal"
       className="feature-list"
       columnCount={data.columnCount}
     />

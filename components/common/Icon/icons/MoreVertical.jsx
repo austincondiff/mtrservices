@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-const SVG = ({ className = '', size = '24' }) => (
+const SVG = ({ className = '', size = '24', ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -12,11 +12,12 @@ const SVG = ({ className = '', size = '24' }) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    {...props}
   >
     <circle cx="12" cy="12" r="1" />
     <circle cx="12" cy="5" r="1" />
     <circle cx="12" cy="19" r="1" />
   </svg>
-);
+)
 
-export default SVG;
+export default SVG

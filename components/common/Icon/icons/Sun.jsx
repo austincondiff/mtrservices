@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-const SVG = ({ className = '', size = '24' }) => (
+const SVG = ({ className = '', size = '24', ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -23,6 +23,6 @@ const SVG = ({ className = '', size = '24' }) => (
     <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
     <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
   </svg>
-);
+)
 
-export default SVG;
+export default SVG

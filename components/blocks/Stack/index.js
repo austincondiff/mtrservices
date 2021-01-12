@@ -1,11 +1,15 @@
+import React, { useMemo } from 'react'
 import theme from '@styles/theme'
 import styled from 'styled-components'
-import { BlocksControls, InlineBlocks } from 'react-tinacms-inline'
+import { BlocksControls, InlineBlocks, useInlineBlocks } from 'react-tinacms-inline'
 import { sizes, colors } from '@utils/formOptions'
 import { featureListBlock } from '../FeatureList'
 import { featureBlock } from '../FeatureList/Feature'
 import { headingBlock } from '../Heading'
 import { paragraphBlock } from '../Paragraph'
+import { buttonGroupBlock } from '../Buttons'
+import { buttonBlock } from '../Buttons/Button'
+import Icon from '@components/common/Icon'
 
 export const Stack = styled(InlineBlocks)`
   display: flex;
@@ -13,7 +17,7 @@ export const Stack = styled(InlineBlocks)`
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: ${({ align }) => `${align === 'center' ? `` : `flex-`}${align}`};
+  align-items: ${({ align }) => `${align === 'center' || align === 'stretch' ? `` : `flex-`}${align}`};
   ${({ direction }) => (direction === 'vertical' ? `flex-direction: column;` : ``)}
   text-align: ${({ textAlign }) => textAlign};
   color: ${({ color, theme }) => theme.color[color]};
@@ -90,6 +94,7 @@ export const stackFields = [
       { value: 'start', label: 'Start' },
       { value: 'center', label: 'Center' },
       { value: 'end', label: 'End' },
+      { value: 'stretch', label: 'Stretch' },
     ],
   },
   {
@@ -239,15 +244,28 @@ export const stackFields = [
   },
 ]
 
+const DuplicateIcon = () => <Icon size="sm" name="copy" style={{ width: 26, height: 18 }} />
+
 export const stackBlock = {
-  Component: ({ index, data }) => (
-    <BlocksControls index={index}>
-      <Stack {...data} name="columns" direction={data.direction} blocks={STACK_BLOCKS}>
-        {data.backgroundImage && !data.backgroundVideo && <BackgroundImage {...data} />}
-        {data.backgroundVideo && <BackgroundVideo {...data} />}
-      </Stack>
-    </BlocksControls>
-  ),
+  Component: ({ index, data }) => {
+    const { insert } = useInlineBlocks()
+    const DuplicateAction = useMemo(
+      () => ({
+        icon: DuplicateIcon(),
+        onClick: () => insert(index + 1, data),
+      }),
+      [data]
+    )
+
+    return (
+      <BlocksControls index={index} customActions={[DuplicateAction]}>
+        <Stack {...data} name="columns" direction={data.direction} blocks={STACK_BLOCKS}>
+          {data.backgroundImage && !data.backgroundVideo && <BackgroundImage {...data} />}
+          {data.backgroundVideo && <BackgroundVideo {...data} />}
+        </Stack>
+      </BlocksControls>
+    )
+  },
   template: {
     label: 'Stack',
     defaultItem: {
@@ -264,4 +282,6 @@ const STACK_BLOCKS = {
   features: featureListBlock,
   heading: headingBlock,
   paragraph: paragraphBlock,
+  buttonGroup: buttonGroupBlock,
+  button: buttonBlock,
 }

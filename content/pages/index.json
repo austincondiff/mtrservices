@@ -46,7 +46,7 @@
         }
       ],
       "showScrollIndicator": true,
-      "buttonOrientation": "horizontal",
+      "buttonGroupDirection": "horizontal",
       "primaryButtonUrl": "/contact",
       "secondaryButtonUrl": "/about"
     }
@@ -431,52 +431,6 @@
           "textAlign": "center"
         }
       ]
-    },
-    {
-      "_template": "paragraph",
-      "color": "black",
-      "backgroundColor": "white",
-      "darkModeColorInverse": true,
-      "backgroundParallax": false,
-      "contentParallax": false,
-      "fullHeight": false,
-      "width": "default",
-      "textAlign": "left",
-      "paddingTop": "md",
-      "paddingBottom": "md",
-      "text": "At MTR Services, we are committed to giving our customers the most expert-level service possible so business operation is seamless. We understand that time is money and every moment down is another dollar lost. Our goal is to not only keep our clients and employees up and running but to create a technical landscape for our customers that fits their business objectives, not the other way around. "
-    },
-    {
-      "_template": "features",
-      "features": [
-        {
-          "_template": "feature",
-          "supporting_copy": "We plan, strategize, and develop network architecture and technical infrastructure. From project inception to completion, we will work side by side with management and IT staff to insure an efficient, custom solution for your technical goals.",
-          "heading": "IT Consulting"
-        },
-        {
-          "_template": "feature",
-          "heading": "Network Management",
-          "supporting_copy": "From a virtual IT department to 24/7 helpdesk support, we keep your network and computers running at optimal performance levels for seamless business operation. ."
-        },
-        {
-          "_template": "feature",
-          "heading": "Telephone Systems",
-          "supporting_copy": "Communication is integral in any business. That is why we can provide the most reliable, top of the line IP phone systems to get you talking in no time."
-        }
-      ],
-      "paddingTop": "md",
-      "paddingBottom": "md",
-      "backgroundColor": "primary",
-      "color": "white"
-    },
-    {
-      "_template": "paragraph",
-      "text": "Call us today at 281 222 9992 to get started!",
-      "paddingTop": "md",
-      "paddingBottom": "md",
-      "backgroundColor": "light",
-      "textAlign": "center"
     }
   ]
 }

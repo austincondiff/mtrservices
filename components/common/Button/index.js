@@ -4,10 +4,15 @@ import theme from '@styles/theme'
 const buttonHeight = 56
 
 const ButtonWrap = styled.button`
-  background: ${({ variant }) =>
-    variant === 'contained' ? `linear-gradient(134deg, #F25E1C 0%, #EDC621 100%)` : `transparent`};
+  background: ${({ variant, color }) =>
+    variant === 'contained'
+      ? color === 'white'
+        ? theme.color.white
+        : `linear-gradient(134deg, #F25E1C 0%, #EDC621 100%)`
+      : `transparent`};
   border-radius: ${({ size, theme }) => theme.button.size[size].height / 2}px;
-  color: white;
+  color: ${({ color, variant, theme }) =>
+    color === 'white' && variant == 'contained' ? theme.color.black : theme.color.white};
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: ${({ size, theme }) => theme.button.size[size].fontSize}px;
@@ -71,5 +76,5 @@ export default Button
 export const ButtonGroup = styled.div`
   display: inline-flex;
   gap: ${({ gap = 'md', theme }) => theme.spacing[gap] || 0}px;
-  flex-direction: ${({ orientation }) => (orientation === 'vertical' ? `column` : ``)};
+  flex-direction: ${({ direction }) => (direction === 'vertical' ? `column` : ``)};
 `

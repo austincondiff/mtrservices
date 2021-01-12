@@ -1,6 +1,8 @@
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
-import { BlocksControls, InlineBlocks } from 'react-tinacms-inline'
+import { BlocksControls, InlineBlocks, useInlineBlocks } from 'react-tinacms-inline'
 import { Stack, stackBlock, stackFields, stackDefaults, BackgroundImage, BackgroundGradient } from '../Stack'
+import Icon from '@components/common/Icon'
 import { sizes } from '@utils/formOptions'
 
 export const sectionDefaults = {
@@ -86,22 +88,40 @@ const SectionStack = styled(Stack)``
 
 export default Section
 
+const DuplicateIcon = () => <Icon size="sm" name="copy" style={{ width: 26, height: 18 }} />
+
 export const sectionBlock = {
-  Component: ({ index, data }) => (
-    <BlocksControls index={index} focusRing={{ offset: 0, borderRadius: 0 }} insetControls>
-      <Section {...data}>
-        <SectionStack
-          name="section"
-          blocks={SECTION_BLOCKS}
-          className="section"
-          {...data}
-          backgroundColor={null}
-          backgroundGradient={null}
-          backgroundImage={null}
-        />
-      </Section>
-    </BlocksControls>
-  ),
+  Component: ({ index, data }) => {
+    const { insert } = useInlineBlocks()
+    const DuplicateAction = useMemo(
+      () => ({
+        icon: DuplicateIcon(),
+        onClick: () => insert(index + 1, data),
+      }),
+      [data]
+    )
+
+    return (
+      <BlocksControls
+        index={index}
+        focusRing={{ offset: 0, borderRadius: 0 }}
+        insetControls
+        customActions={[DuplicateAction]}
+      >
+        <Section {...data}>
+          <SectionStack
+            name="section"
+            blocks={SECTION_BLOCKS}
+            className="section"
+            {...data}
+            backgroundColor={null}
+            backgroundGradient={null}
+            backgroundImage={null}
+          />
+        </Section>
+      </BlocksControls>
+    )
+  },
   template: {
     label: 'Section',
     defaultItem: {

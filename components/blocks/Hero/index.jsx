@@ -121,8 +121,8 @@ export const heroBlock = {
         component: 'text',
       },
       {
-        name: 'buttonOrientation',
-        label: 'Button Orientation',
+        name: 'buttonGroupDirection',
+        label: 'Button Group Direction',
         component: 'select',
         options: [
           { label: 'Vertical', value: 'vertical' },
