@@ -367,9 +367,9 @@
           "stackChildren": [
             {
               "_template": "heading",
-              "supertitle": "Supertitle goes here",
-              "title": "Title goes here",
-              "subtitle": "Subtitle goes here"
+              "supertitle": "Testimonials",
+              "title": "What people are saying about us",
+              "subtitle": "Don't take our word for it. Look at what our customers have to say."
             },
             {
               "_template": "testimonials",
