@@ -349,6 +349,74 @@
     },
     {
       "_template": "section",
+      "gap": "lg",
+      "direction": "horizontal",
+      "distribute": "center",
+      "align": "start",
+      "padding": 0,
+      "radius": 0,
+      "background": "transparent",
+      "color": "black",
+      "backgroundColor": "white",
+      "darkModeColorInverse": true,
+      "backgroundParallax": false,
+      "contentParallax": false,
+      "fullHeight": false,
+      "width": "default",
+      "textAlign": "left",
+      "paddingTop": "md",
+      "paddingBottom": "md",
+      "sectionChildren": [
+        {
+          "_template": "stack",
+          "gap": "md",
+          "direction": "vertical",
+          "distribute": "center",
+          "align": "center",
+          "padding": 0,
+          "radius": 0,
+          "background": "transparent",
+          "stackChildren": [
+            {
+              "_template": "heading",
+              "supertitle": "Supertitle goes here",
+              "title": "Title goes here",
+              "subtitle": "Subtitle goes here"
+            },
+            {
+              "_template": "testimonials",
+              "columnCount": 3,
+              "testimonials": [
+                {
+                  "_template": "testimonial",
+                  "author": {
+                    "name": "John Smith"
+                  },
+                  "body": "I would like to personally thank you for your outstanding product. It's incredible. It really saves me time and effort. MTR Services is exactly what our business has been lacking. I could probably go into sales for you."
+                },
+                {
+                  "_template": "testimonial",
+                  "author": {
+                    "name": "Jane Doe"
+                  },
+                  "body": "MTR Services saved my business. I would also like to say thank you to all your staff. Thank you so much for your help."
+                },
+                {
+                  "_template": "testimonial",
+                  "author": {
+                    "name": "Johnny Appleseed"
+                  },
+                  "body": "MTR Services has completely surpassed our expectations. Just what I was looking for."
+                }
+              ]
+            }
+          ],
+          "textAlign": "center"
+        }
+      ]
+    },
+    {
+      "_template": "section",
       "color": "black",
       "backgroundColor": "white",
       "darkModeColorInverse": true,
