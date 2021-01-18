@@ -31,7 +31,7 @@ const Supertitle = styled.span`
   }
 `
 const Title = styled.h2`
-  font-weight: 700;
+  font-weight: 800;
   font-size: 44px;
   letter-spacing: -0.9px;
   line-height: 1.2;

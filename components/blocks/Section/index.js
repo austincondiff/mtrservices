@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import { BlocksControls, InlineBlocks, useInlineBlocks } from 'react-tinacms-inline'
 import { Stack, stackBlock, stackFields, stackDefaults, BackgroundImage, BackgroundGradient } from '../Stack'
 import Icon from '@components/common/Icon'
-import { sizes } from '@utils/formOptions'
+import ShapeDivider from './ShapeDivider'
+import { sizes, colors } from '@utils/formOptions'
 
 export const sectionDefaults = {
   color: 'black',
@@ -16,8 +17,15 @@ export const sectionDefaults = {
   textAlign: 'left',
   paddingTop: 'md',
   paddingBottom: 'md',
-  gap: 'md',
+  gap: 'lg',
   align: 'start',
+  direction: 'horizontal',
+  sectionChildren: [
+    {
+      _template: 'stack',
+      ...stackDefaults,
+    },
+  ],
 }
 
 export const sectionFields = [
@@ -49,6 +57,55 @@ export const sectionFields = [
     component: 'select',
     options: sizes,
   },
+  {
+    name: 'shapeDivider',
+    label: 'Shape Divider',
+    component: 'group',
+    fields: [
+      {
+        name: 'name',
+        label: 'Type',
+        component: 'select',
+        options: [
+          { value: null, label: 'None' },
+          { value: 'book', label: 'Book' },
+          { value: 'curve', label: 'Curve' },
+          { value: 'split', label: 'Split' },
+          { value: 'tilt', label: 'Tilt' },
+          { value: 'triangle', label: 'Triangle' },
+          { value: 'triangle-asymetrical', label: 'Triangle Asymetrical' },
+          { value: 'wave', label: 'Wave' },
+          { value: 'wave-fade', label: 'Wave Fade' },
+          { value: 'wave-alt', label: 'Wave Alt' },
+        ],
+      },
+      {
+        name: 'color',
+        label: 'Color',
+        component: 'select',
+        options: colors,
+      },
+      {
+        name: 'position',
+        label: 'Position',
+        component: 'select',
+        options: [
+          { value: 'top', label: 'Top' },
+          { value: 'bottom', label: 'Bottom' },
+        ],
+      },
+      {
+        name: 'flipped',
+        label: 'Flipped',
+        component: 'toggle',
+      },
+      {
+        name: 'inverted',
+        label: 'Inverted',
+        component: 'toggle',
+      },
+    ],
+  },
 ]
 
 const SectionWrap = styled.section`
@@ -74,8 +131,10 @@ const ContentWrap = styled.div`
 `
 
 const Section = ({ children, ...props }) => {
+  console.log({ props })
   return (
     <SectionWrap {...props}>
+      {props.shapeDivider?.name && <ShapeDivider {...props.shapeDivider} />}
       {props.backgroundImage && !props.backgroundVideo && <BackgroundImage {...props} />}
       {props.backgroundVideo && <BackgroundVideo {...props} />}
       {props.backgroundGradient?.enable && <BackgroundGradient {...props} />}
@@ -110,7 +169,7 @@ export const sectionBlock = {
       >
         <Section {...data}>
           <SectionStack
-            name="section"
+            name="sectionChildren"
             blocks={SECTION_BLOCKS}
             className="section"
             {...data}

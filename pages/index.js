@@ -79,8 +79,8 @@ export default function Home({ file, themeFile, navigationFile, siteFile, previe
   const formOptions = {
     label: 'Home Page',
     fields: [
-      { name: 'title', component: 'image' },
-      { name: 'body', component: 'textarea' },
+      { name: 'title', label: 'Title', component: 'text' },
+      { name: 'body', label: 'Body', component: 'textarea' },
     ],
   }
   const themeFormOptions = {

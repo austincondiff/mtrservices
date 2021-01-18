@@ -12,7 +12,7 @@ const ButtonWrap = styled.button`
       : `transparent`};
   border-radius: ${({ size, theme }) => theme.button.size[size].height / 2}px;
   color: ${({ color, variant, theme }) =>
-    color === 'white' && variant == 'contained' ? theme.color.black : theme.color.white};
+    variant !== 'contained' || (color === 'white' && variant !== 'contained') ? theme.color.white : theme.color.black};
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: ${({ size, theme }) => theme.button.size[size].fontSize}px;
@@ -35,8 +35,8 @@ const ButtonWrap = styled.button`
   }
 `
 
-const Button = ({ children, size = 'md', variant = 'ghost', ...props }) => (
-  <ButtonWrap variant={variant} size={size} {...props}>
+const Button = ({ children, size = 'md', variant = 'ghost', color = 'primary', ...props }) => (
+  <ButtonWrap variant={variant} size={size} color={color} {...props}>
     {variant === 'outlined' && (
       <svg
         style={{

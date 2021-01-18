@@ -184,7 +184,7 @@ export const stackFields = [
   {
     name: 'backgroundVideo',
     label: 'Background Video',
-    component: 'file',
+    component: 'image',
   },
   {
     name: 'backgroundOpacity',
@@ -251,7 +251,7 @@ export const stackBlock = {
     const { insert } = useInlineBlocks()
     const DuplicateAction = useMemo(
       () => ({
-        icon: DuplicateIcon(),
+        icon: <DuplicateIcon />,
         onClick: () => insert(index + 1, data),
       }),
       [data]
@@ -259,7 +259,7 @@ export const stackBlock = {
 
     return (
       <BlocksControls index={index} customActions={[DuplicateAction]}>
-        <Stack {...data} name="columns" direction={data.direction} blocks={STACK_BLOCKS}>
+        <Stack {...data} name="stackChildren" direction={data.direction} blocks={STACK_BLOCKS}>
           {data.backgroundImage && !data.backgroundVideo && <BackgroundImage {...data} />}
           {data.backgroundVideo && <BackgroundVideo {...data} />}
         </Stack>
