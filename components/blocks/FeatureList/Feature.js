@@ -3,32 +3,43 @@ import styled from 'styled-components'
 import { BlocksControls, InlineTextarea } from 'react-tinacms-inline'
 import Icon, { iconComponents } from '@components/common/Icon'
 
+const FeatureWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.sm}px;
+  align-items: flex-start;
+`
 const IconWrap = styled.div`
   display: inline-block;
   padding: ${({ theme }) => theme.spacing.xs}px;
-  margin-bottom: ${({ theme }) => theme.spacing.xs}px;
   color: ${({ theme }) => theme.color.primary};
   background-color: ${({ theme }) => theme.color.primary}18;
   border-radius: ${({ theme }) => theme.radius.md}px;
   font-size: 0;
 `
+const Title = styled.h3`
+  font-size: 1.5rem;
+  && {
+    margin: 0;
+  }
+`
 
 function Feature({ data, index }) {
   return (
     <BlocksControls index={index}>
-      <div className="feature">
+      <FeatureWrap>
         {data.icon && (
           <IconWrap>
             <Icon size="lg" name={data.icon} />
           </IconWrap>
         )}
-        <h3>
+        <Title>
           <InlineTextarea name="heading" focusRing={false} />
-        </h3>
+        </Title>
         <p>
           <InlineTextarea name="supporting_copy" focusRing={false} />
         </p>
-      </div>
+      </FeatureWrap>
     </BlocksControls>
   )
 }

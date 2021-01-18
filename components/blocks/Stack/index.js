@@ -9,6 +9,7 @@ import { headingBlock } from '../Heading'
 import { paragraphBlock } from '../Paragraph'
 import { buttonGroupBlock } from '../Buttons'
 import { buttonBlock } from '../Buttons/Button'
+import { testimonialsBlock } from '../Testimonials'
 import Icon from '@components/common/Icon'
 
 export const Stack = styled(InlineBlocks)`
@@ -284,4 +285,5 @@ const STACK_BLOCKS = {
   paragraph: paragraphBlock,
   buttonGroup: buttonGroupBlock,
   button: buttonBlock,
+  testimonials: testimonialsBlock,
 }

@@ -171,6 +171,7 @@ export const sectionBlock = {
           <SectionStack
             name="sectionChildren"
             blocks={SECTION_BLOCKS}
+            min={1}
             className="section"
             {...data}
             backgroundColor={null}
@@ -185,8 +186,8 @@ export const sectionBlock = {
     label: 'Section',
     defaultItem: {
       _template: 'section',
-      ...sectionDefaults,
       ...stackDefaults,
+      ...sectionDefaults,
       direction: 'horizontal',
     },
     fields: [...sectionFields, ...stackFields],
