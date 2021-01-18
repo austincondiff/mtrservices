@@ -78,7 +78,10 @@
       "gap": "md",
       "color": "dark",
       "textAlign": "center",
-      "backgroundColor": "light"
+      "backgroundColor": "light",
+      "backgroundOpacity": 0.01,
+      "contentParallax": false,
+      "backgroundParallax": false
     },
     {
       "_template": "section",
@@ -280,7 +283,7 @@
       "section": [
         {
           "_template": "stack",
-          "gap": "md",
+          "gap": "lg",
           "direction": "vertical",
           "distribute": "center",
           "align": "center",
@@ -293,74 +296,50 @@
               "supertitle": "Supertitle goes here",
               "title": "Title goes here",
               "subtitle": "Subtitle goes here"
-            }
-          ]
-        },
-        {
-          "_template": "stack",
-          "gap": "md",
-          "direction": "vertical",
-          "distribute": "center",
-          "align": "center",
-          "padding": 0,
-          "radius": 0,
-          "background": "transparent",
-          "columns": [
+            },
             {
               "_template": "paragraph",
-              "text": "Take root and flourish quis nostrum exercitationem ullam corporis suscipit laboriosam culture Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur descended from astronomers encyclopaedia galactica? Nisi ut aliquid ex ea commodi consequatur."
-            }
-          ]
-        },
-        {
-          "_template": "stack",
-          "gap": "md",
-          "direction": "vertical",
-          "distribute": "center",
-          "align": "center",
-          "padding": 0,
-          "radius": 0,
-          "background": "transparent",
-          "columns": [
+              "text": "Take root and flourish quis nostrum exercitationem ullam corporis suscipit laboriosam culture Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur descended from astronomers encyclopaedia galactica? Nisi ut aliquid ex ea commodi consequatur something incredible is waiting to be known sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem "
+            },
             {
               "_template": "features",
               "columnCount": 3,
               "features": [
                 {
                   "_template": "feature",
-                  "heading": "Heading 1",
-                  "supporting_copy": "supporting copy",
-                  "icon": "bar-chart"
+                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
+                  "icon": "eye",
+                  "heading": "Heading One"
                 },
                 {
                   "_template": "feature",
-                  "heading": "Heading 2",
-                  "supporting_copy": "supporting copy",
-                  "icon": "bitbucket"
+                  "heading": "Heading Two",
+                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
+                  "icon": "files"
                 },
                 {
                   "_template": "feature",
-                  "heading": "Heading 3",
-                  "supporting_copy": "supporting copy",
-                  "icon": "link"
+                  "heading": "Heading Three",
+                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
+                  "icon": "flag"
                 },
                 {
                   "_template": "feature",
-                  "heading": "Heading 4",
-                  "supporting_copy": "supporting copy",
-                  "icon": "alert-circle"
+                  "heading": "Heading Four",
+                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
+                  "icon": "music"
                 },
                 {
                   "_template": "feature",
-                  "heading": "Heading 5",
-                  "supporting_copy": "supporting copy",
-                  "icon": "bold"
+                  "heading": "Heading Five",
+                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
+                  "icon": "server"
                 },
                 {
                   "_template": "feature",
-                  "heading": "Heading 6",
-                  "supporting_copy": "supporting copy",
-                  "icon": "share-2"
+                  "heading": "Heading Six",
+                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
+                  "icon": "film"
                 }
               ]
             }
