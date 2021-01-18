@@ -364,7 +364,7 @@
       "fullHeight": false,
       "width": "default",
       "textAlign": "left",
-      "paddingTop": "md",
+      "paddingTop": "none",
       "paddingBottom": "md",
       "sectionChildren": [
         {
