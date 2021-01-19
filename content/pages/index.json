@@ -373,7 +373,6 @@
             },
             {
               "_template": "testimonials",
-              "columnCount": 3,
               "testimonials": [
                 {
                   "_template": "testimonial",
@@ -388,7 +387,7 @@
                   "_template": "testimonial",
                   "author": {
                     "name": "Steve Rodgers",
-                    "avatar": "/images/steve-rodgers-avatar.jpg"
+                    "avatar": "/images/steve-rogers-avatar.jpg"
                   },
                   "body": "MTR Services saved my business. I would also like to say thank you to all your staff. Thank you so much for your help."
                 },

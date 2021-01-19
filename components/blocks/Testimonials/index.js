@@ -86,7 +86,7 @@ function Testimonials({ data }) {
         <TestimonialControls>
           {data.directionalArrows && (
             <DirectionalButton onClick={() => setActive(active === 0 ? testimonials.length - 1 : active - 1)}>
-              <Icon name="arrow-left" size="lg" />
+              <Icon name="arrow-left" size="xl" />
             </DirectionalButton>
           )}
           {data.pagination && (
@@ -103,7 +103,7 @@ function Testimonials({ data }) {
           )}
           {data.directionalArrows && (
             <DirectionalButton onClick={() => setActive(active === testimonials.length - 1 ? 0 : active + 1)}>
-              <Icon name="arrow-right" />
+              <Icon name="arrow-right" size="xl" />
             </DirectionalButton>
           )}
         </TestimonialControls>
