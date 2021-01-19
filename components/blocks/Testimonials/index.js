@@ -126,26 +126,71 @@ export const testimonialsBlock = {
     label: 'Testimonials',
     defaultItem: {
       _template: 'testimonials',
-      columnCount: 3,
       testimonials: [
         {
           _template: 'testimonial',
-          author: { name: 'John Smith' },
+          author: {
+            name: 'Tony Stark',
+            title: 'CEO of Stark Industries',
+            avatar: '/images/tony-stark-avatar.jpg',
+          },
           body:
             "I would like to personally thank you for your outstanding product. It's incredible. It really saves me time and effort. MTR Services is exactly what our business has been lacking. I could probably go into sales for you.",
         },
         {
           _template: 'testimonial',
-          author: { name: 'Jane Doe' },
+          author: {
+            name: 'Steve Rodgers',
+            avatar: '/images/steve-rogers-avatar.jpg',
+          },
           body:
             'MTR Services saved my business. I would also like to say thank you to all your staff. Thank you so much for your help.',
         },
         {
           _template: 'testimonial',
-          author: { name: 'Johnny Appleseed' },
+          author: {
+            name: 'Bruce Banner',
+            avatar: '/images/bruce-banner-avatar.jpg',
+          },
+          body: 'MTR Services has completely surpassed our expectations. Just what I was looking for.',
+        },
+        {
+          _template: 'testimonial',
+          author: {
+            name: 'Clint Barton',
+            avatar: '/images/clint-barton-avatar.jpg',
+          },
+          body:
+            "I would like to personally thank you for your outstanding product. It's incredible. It really saves me time and effort. MTR Services is exactly what our business has been lacking. I could probably go into sales for you.",
+        },
+        {
+          _template: 'testimonial',
+          author: {
+            name: 'Natasha Romanoff',
+            avatar: '/images/natasha-romanoff-avatar.jpg',
+          },
+          body:
+            'MTR Services saved my business. I would also like to say thank you to all your staff. Thank you so much for your help.',
+        },
+        {
+          _template: 'testimonial',
+          author: {
+            name: 'Thor Odinson',
+            avatar: '/images/thor-odinson-avatar.jpg',
+          },
+          body: 'MTR Services has completely surpassed our expectations. Just what I was looking for.',
+        },
+        {
+          _template: 'testimonial',
+          author: {
+            name: 'Peter Quill',
+            avatar: '/images/peter-quill-avatar.jpg',
+          },
           body: 'MTR Services has completely surpassed our expectations. Just what I was looking for.',
         },
       ],
+      directionalArrows: true,
+      pagination: true,
     },
     fields: [
       {
