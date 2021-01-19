@@ -81,7 +81,7 @@ export function useCarousel(length, interval, options = {}) {
   const beforeGhostItems = ghostMap.map((i) => orderedItemIndexArr[orderedItemIndexArr.length - 1 - i]).reverse()
   const afterGhostItems = ghostMap.map((i) => orderedItemIndexArr[i])
   const itemsWithGhosts = [...beforeGhostItems, ...orderedItemIndexArr, ...afterGhostItems]
-  // console.log(state.active, itemsWithGhosts)
+  console.log(state.active, itemsWithGhosts)
 
   const [items, setItems] = useState(undefined)
   const [activeItem, setActiveItem] = useState()
@@ -157,7 +157,12 @@ export function useCarousel(length, interval, options = {}) {
     const dir = (dist > length / 2 ? 1 : -1) * Math.sign(state.desired - state.active)
     const shift = (totalWidth * (pref || dir)) / (length + shadowSlides)
     style.transition = smooth
-    style.transform = `translateX(${(800 + itemGap) * dist * dir}px)`
+    if (state.active === length - 1 && dir === -1) {
+      console.log(state.active, length, dir)
+      style.transform = `translateX(${(800 + itemGap) * (length + 1)}px)`
+    } else {
+      style.transform = `translateX(${(800 + itemGap) * dist * dir}px)`
+    }
   } else if (!isNaN(state.offset)) {
     if (state.offset !== 0) {
       style.transform = `translateX(${-state.offset}px)`

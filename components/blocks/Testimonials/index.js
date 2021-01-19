@@ -31,16 +31,26 @@ const TestimonialControls = styled.div`
   padding: ${({ theme }) => theme.spacing.sm}px 0;
 `
 const DirectionalButton = styled.button`
+  cursor: pointer;
+  outline: none;
   background-color: transparent;
   border: 0;
   padding: 0;
-  color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.black};
+  opacity: 0.25;
+  transition: 250ms;
+  &:hover {
+    opacity: 1;
+    color: ${({ theme }) => theme.color.primary};
+  }
 `
 const Pagination = styled.div`
   display: flex;
   gap: 8px;
 `
 const PaginationButton = styled.button`
+  cursor: pointer;
+  outline: none;
   background-color: ${({ active, theme }) => (active ? theme.color.primary : `#00000044`)};
   box-shadow: ${({ active, theme }) => (active ? `0 8px 16px 2px rgba(17,12,46,0.15)` : `0 0 0 0 transparent`)};
   border: 0;
@@ -48,6 +58,19 @@ const PaginationButton = styled.button`
   width: 32px;
   height: 3px;
   transition: 400ms;
+  position: relative;
+  &:hover {
+    background-color: ${({ active, theme }) => (active ? theme.color.primary : `#00000088`)};
+  }
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 32px;
+    position: absolute;
+    left: 0;
+    top: -15px;
+  }
 `
 
 function makeIndices(start, delta, num) {
