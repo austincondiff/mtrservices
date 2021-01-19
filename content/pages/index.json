@@ -378,21 +378,49 @@
                 {
                   "_template": "testimonial",
                   "author": {
-                    "name": "John Smith"
+                    "name": "Tony Stark"
                   },
                   "body": "I would like to personally thank you for your outstanding product. It's incredible. It really saves me time and effort. MTR Services is exactly what our business has been lacking. I could probably go into sales for you."
                 },
                 {
                   "_template": "testimonial",
                   "author": {
-                    "name": "Jane Doe"
+                    "name": "Steve Rodgers"
                   },
                   "body": "MTR Services saved my business. I would also like to say thank you to all your staff. Thank you so much for your help."
                 },
                 {
                   "_template": "testimonial",
                   "author": {
-                    "name": "Johnny Appleseed"
+                    "name": "Bruce Banner"
+                  },
+                  "body": "MTR Services has completely surpassed our expectations. Just what I was looking for."
+                },
+                {
+                  "_template": "testimonial",
+                  "author": {
+                    "name": "Clint Barton"
+                  },
+                  "body": "I would like to personally thank you for your outstanding product. It's incredible. It really saves me time and effort. MTR Services is exactly what our business has been lacking. I could probably go into sales for you."
+                },
+                {
+                  "_template": "testimonial",
+                  "author": {
+                    "name": "Natasha Romanoff"
+                  },
+                  "body": "MTR Services saved my business. I would also like to say thank you to all your staff. Thank you so much for your help."
+                },
+                {
+                  "_template": "testimonial",
+                  "author": {
+                    "name": "Thor Odenson"
+                  },
+                  "body": "MTR Services has completely surpassed our expectations. Just what I was looking for."
+                },
+                {
+                  "_template": "testimonial",
+                  "author": {
+                    "name": "Peter Quill"
                   },
                   "body": "MTR Services has completely surpassed our expectations. Just what I was looking for."
                 }

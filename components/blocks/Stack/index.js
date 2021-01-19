@@ -32,7 +32,7 @@ export const Stack = styled(InlineBlocks)`
       ${theme.spacing[paddingLeft] || 0}px;`
       : ``}
   ${({ radius }) => (radius ? `border-radius: ${theme.radius[radius]}px;` : ``)}
-  width: 100%;
+  flex: 1;
 `
 
 export const BackgroundImage = styled.div`

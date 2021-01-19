@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { BlocksControls, InlineBlocks } from 'react-tinacms-inline'
 import { testimonialBlock, Testimonial } from './Testimonial'
 import Icon from '@components/common/Icon'
 import theme from '@styles/theme'
+import { useCarousel } from '@hooks/useCarousel'
+import isInBroser from 'is-in-browser'
 
 const TestimonialsWrap = styled.div`
   position: relative;
@@ -14,8 +16,10 @@ const TestimonialsWrap = styled.div`
 `
 const TestimonialsInside = styled.div`
   display: flex;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing.lg}px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  gap: 64px;
   padding-top: 52px;
 `
 const TestimonialControls = styled.div`
@@ -24,6 +28,7 @@ const TestimonialControls = styled.div`
   justify-content: center;
   margin-top: 64px;
   gap: 24px;
+  padding: ${({ theme }) => theme.spacing.sm}px 0;
 `
 const DirectionalButton = styled.button`
   background-color: transparent;
@@ -33,43 +38,84 @@ const DirectionalButton = styled.button`
 `
 const Pagination = styled.div`
   display: flex;
-  gap: 12px;
+  gap: 8px;
 `
 const PaginationButton = styled.button`
   background-color: ${({ active, theme }) => (active ? theme.color.primary : `#00000044`)};
-  box-shadow: ${({ active, theme }) => (active ? `0 8px 24px 0 rgba(17, 12, 46, 0.15)` : `0 0 0 0 transparent`)};
+  box-shadow: ${({ active, theme }) => (active ? `0 8px 16px 2px rgba(17,12,46,0.15)` : `0 0 0 0 transparent`)};
   border: 0;
   padding: 0;
   width: 32px;
   height: 3px;
+  transition: 400ms;
 `
 
+function makeIndices(start, delta, num) {
+  const indices = []
+
+  while (indices.length < num) {
+    indices.push(start)
+    start += delta
+  }
+
+  return indices
+}
+
 function Testimonials({ data }) {
+  const { testimonials, interval = 3000 } = data
+  const [totalWidth, setTotalWidth] = useState()
+  const [windowWidth, setWindowWidth] = useState(isInBroser ? window.innerWidth : 0)
+
+  let refs = useRef(testimonials.map(() => React.createRef()))
+
+  const itemGap = 64
+
+  const length = testimonials.length
+  const slidesPresented = 3
+  const numActive = Math.min(length, slidesPresented)
+  const [slideIndexes, active, setActive, handlers, style] = useCarousel(length, interval, {
+    slidesPresented: numActive,
+  })
+
   return (
-    <TestimonialsWrap>
-      <TestimonialsInside>
-        {data.testimonials?.map((testimonial, index) => (
-          <Testimonial key={index} {...testimonial} active={index === Math.floor(data.testimonials?.length / 2)} />
-        ))}
-      </TestimonialsInside>
-      <TestimonialControls>
-        <DirectionalButton>
-          <Icon name="arrow-left" size="lg" />
-        </DirectionalButton>
-        <Pagination>
-          {data.testimonials?.map((testimonial, index) => (
-            <PaginationButton
-              key={index}
-              {...testimonial}
-              active={index === Math.floor(data.testimonials?.length / 2)}
+    <div>
+      <TestimonialsWrap>
+        <TestimonialsInside {...handlers} style={style}>
+          {slideIndexes?.map?.((index, i) => (
+            <Testimonial
+              onClick={() => setActive(index)}
+              key={`${index}-${i}`}
+              {...testimonials[index]}
+              active={index === active}
             />
           ))}
-        </Pagination>
-        <DirectionalButton>
-          <Icon name="arrow-right" />
-        </DirectionalButton>
-      </TestimonialControls>
-    </TestimonialsWrap>
+        </TestimonialsInside>
+        <TestimonialControls>
+          {data.directionalArrows && (
+            <DirectionalButton onClick={() => setActive(active === 0 ? testimonials.length - 1 : active - 1)}>
+              <Icon name="arrow-left" size="lg" />
+            </DirectionalButton>
+          )}
+          {data.pagination && (
+            <Pagination>
+              {data.testimonials?.map((testimonial, index) => (
+                <PaginationButton
+                  key={index}
+                  {...testimonial}
+                  active={index === active}
+                  onClick={() => setActive(index)}
+                />
+              ))}
+            </Pagination>
+          )}
+          {data.directionalArrows && (
+            <DirectionalButton onClick={() => setActive(active === testimonials.length - 1 ? 0 : active + 1)}>
+              <Icon name="arrow-right" />
+            </DirectionalButton>
+          )}
+        </TestimonialControls>
+      </TestimonialsWrap>
+    </div>
   )
 }
 
@@ -109,6 +155,16 @@ export const testimonialsBlock = {
       ],
     },
     fields: [
+      {
+        name: 'directionalArrows',
+        label: 'Directional Arrows',
+        component: 'toggle',
+      },
+      {
+        name: 'pagination',
+        label: 'Pagination',
+        component: 'toggle',
+      },
       {
         name: 'testimonials',
         label: 'Testimonials',

@@ -55,15 +55,15 @@ const Author = styled.span`
   font-weight: 500;
 `
 
-export function Testimonial({ body, author, active }) {
+export const Testimonial = React.forwardRef(({ body, author, active, onClick }, ref) => {
   return (
-    <TestimonialWrap active={active}>
+    <TestimonialWrap active={active} onClick={onClick} ref={ref}>
       {(true || data.avatar) && <Avatar size="lg" name={author.avatar} active={active} />}
       <Body>{body}</Body>
       <Author>{author.name}</Author>
     </TestimonialWrap>
   )
-}
+})
 
 const testimonialBlockTemplate = {
   key: 'testimonial',
