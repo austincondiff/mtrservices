@@ -62,14 +62,7 @@ function makeIndices(start, delta, num) {
 }
 
 function Testimonials({ data }) {
-  const { testimonials, interval = 3000 } = data
-  const [totalWidth, setTotalWidth] = useState()
-  const [windowWidth, setWindowWidth] = useState(isInBroser ? window.innerWidth : 0)
-
-  let refs = useRef(testimonials.map(() => React.createRef()))
-
-  const itemGap = 64
-
+  const { testimonials, interval = 5000 } = data
   const length = testimonials.length
   const slidesPresented = 3
   const numActive = Math.min(length, slidesPresented)
