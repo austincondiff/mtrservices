@@ -176,7 +176,8 @@
           "align": "center",
           "padding": 0,
           "radius": 0,
-          "background": "transparent"
+          "background": "transparent",
+          "backgroundImage": "/images/server-cables.jpg"
         },
         {
           "_template": "stack",
