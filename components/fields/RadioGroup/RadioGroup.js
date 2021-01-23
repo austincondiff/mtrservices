@@ -71,7 +71,7 @@ const ActiveRadioIndicator = styled.div`
   ${(p) => (p.position?.left ? `left: ${p.position?.left}px;` : ``)};
   ${(p) => (p.position?.top ? `top: ${p.position?.top}px;` : ``)}
   ${(p) => `transform: scale(${p.hasValue ? `1` : `0`});`}
-  transition: all 170ms ease-out;
+  transition: all 85ms ease-out;
   backface-visibility: hidden;
   background-color: var(--tina-color-primary);
   box-shadow: var(--tina-shadow-small);
@@ -96,6 +96,7 @@ const RadioOptions = styled.div`
     padding: 3px;
     box-shadow: 0 0 0 0 var(--tina-color-grey-3);
     transition: all 85ms ease-out;
+    gap: 3px;
     &:hover {
       box-shadow: 0 0 0 2px var(--tina-color-grey-3);
     }
