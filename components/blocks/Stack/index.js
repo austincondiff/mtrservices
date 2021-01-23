@@ -75,13 +75,16 @@ export const stackFields = [
   {
     name: 'gap',
     label: 'Gap',
-    component: 'select',
+    component: 'radio-group',
     options: sizes,
+    // direction: 'vertical',
+    variant: 'button',
   },
   {
     name: 'direction',
     label: 'Direction',
-    component: 'select',
+    component: 'radio-group',
+    variant: 'button',
     options: [
       { value: 'horizontal', label: 'Horizontal' },
       { value: 'vertical', label: 'Vertical' },
@@ -90,7 +93,8 @@ export const stackFields = [
   {
     name: 'align',
     label: 'Align',
-    component: 'select',
+    component: 'radio-group',
+    variant: 'button',
     options: [
       { value: 'start', label: 'Start' },
       { value: 'center', label: 'Center' },
@@ -196,31 +200,36 @@ export const stackFields = [
   {
     name: 'paddingTop',
     label: 'Padding Top',
-    component: 'select',
+    component: 'radio-group',
+    variant: 'button',
     options: sizes,
   },
   {
     name: 'paddingRight',
     label: 'Padding Right',
-    component: 'select',
+    component: 'radio-group',
+    variant: 'button',
     options: sizes,
   },
   {
     name: 'paddingBottom',
     label: 'Padding Bottom',
-    component: 'select',
+    component: 'radio-group',
+    variant: 'button',
     options: sizes,
   },
   {
     name: 'paddingLeft',
     label: 'Padding Left',
-    component: 'select',
+    component: 'radio-group',
+    variant: 'button',
     options: sizes,
   },
   {
     name: 'radius',
     label: 'Radius',
-    component: 'select',
+    component: 'radio-group',
+    variant: 'button',
     options: sizes,
   },
   {
@@ -236,7 +245,8 @@ export const stackFields = [
   {
     name: 'textAlign',
     label: 'Text Alignment',
-    component: 'select',
+    component: 'radio-group',
+    variant: 'button',
     options: [
       { value: 'left', label: 'Left' },
       { value: 'center', label: 'Center' },

@@ -1,10 +1,10 @@
 export const sizes = [
-  { value: 'none', label: 'None' },
-  { value: 'xs', label: 'Extra Small' },
-  { value: 'sm', label: 'Small' },
-  { value: 'md', label: 'Medium' },
-  { value: 'lg', label: 'Large' },
-  { value: 'xl', label: 'Extra Large' },
+  { value: 'none', label: '0' },
+  { value: 'xs', label: 'XS' },
+  { value: 'sm', label: 'SM' },
+  { value: 'md', label: 'MD' },
+  { value: 'lg', label: 'LG' },
+  { value: 'xl', label: 'XL' },
 ]
 
 export const colors = [

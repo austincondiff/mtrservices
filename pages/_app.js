@@ -6,6 +6,8 @@ import { ThemeProvider } from 'styled-components'
 import isInBrowser from 'is-in-browser'
 import GlobalStyles from '@styles/GlobalStyles'
 import theme from '@styles/theme'
+
+import { RadioGroupFieldPlugin } from '@components/fields/RadioGroup'
 export default class Site extends App {
   constructor(props) {
     super(props)
@@ -34,6 +36,8 @@ export default class Site extends App {
       apis: { github },
       media: new GithubMediaStore(github),
     })
+
+    this.cms.fields.add(RadioGroupFieldPlugin)
   }
 
   render() {
