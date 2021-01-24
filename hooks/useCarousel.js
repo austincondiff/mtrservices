@@ -15,28 +15,37 @@ const smooth = `transform ${transitionTime}ms ease`
 
 const initialCarouselState = {
   offset: 0,
-  desired: 0,
+  target: 0,
   active: 0,
 }
 
-function previous(length, current) {
-  return (current - 1 + length) % length
+function previous(current) {
+  return current - 1
 }
 
-function next(length, current) {
-  return (current + 1) % length
+function next(current) {
+  return current + 1
+}
+
+function targetToActive(target, length) {
+  return target < 0 ? (target + length) % length : target > length - 1 ? target % length : target
 }
 
 function carouselReducer(state, action) {
   switch (action.type) {
     case 'jump':
-      return { ...state, desired: action.desired }
+      return { ...state, target: action.target }
     case 'next':
-      return { ...state, desired: next(action.length, state.active) }
+      return { ...state, target: next(Math.max(state.active, state.target)) }
     case 'prev':
-      return { ...state, desired: previous(action.length, state.active) }
+      return { ...state, target: previous(Math.min(state.active, state.target)) }
     case 'done':
-      return { ...state, offset: NaN, active: state.desired }
+      return {
+        ...state,
+        offset: NaN,
+        active: targetToActive(state.target, action.length),
+        target: targetToActive(state.target, action.length),
+      }
     case 'drag':
       return { ...state, offset: action.offset }
     default:
@@ -60,41 +69,30 @@ function swiped(delta, dispatch, length, dir, container) {
 
 export function useCarousel(length, interval, options = {}) {
   const itemsVisible = 3
-  const n = Math.max(1, Math.min(itemsVisible, length))
-  const itemIndexArr =
-    length &&
-    Array(length)
-      .fill()
-      .map((_, i) => i)
-  const shadowSlides = itemsVisible * 2
-
+  const itemWidth = 800
+  const itemGap = 64
+  const itemIndexArr = Array(length || 0)
+    .fill()
+    .map((_, i) => i)
   const [state, dispatch] = useReducer(carouselReducer, initialCarouselState)
   const [container, setContainer] = useState(undefined)
-
-  const orderedItemIndexArr = state.active
-    ? [...itemIndexArr.slice(state.active), ...itemIndexArr.slice(0, state.active)]
-    : itemIndexArr
-
+  const orderedItemIndexArr = itemIndexArr
   const ghostMap = Array(itemsVisible)
     .fill()
     .map((_, i) => i)
   const beforeGhostItems = ghostMap.map((i) => orderedItemIndexArr[orderedItemIndexArr.length - 1 - i]).reverse()
   const afterGhostItems = ghostMap.map((i) => orderedItemIndexArr[i])
-  const itemsWithGhosts = [...beforeGhostItems, ...orderedItemIndexArr, ...afterGhostItems]
-  console.log(state.active, itemsWithGhosts)
-
-  const [items, setItems] = useState(undefined)
-  const [activeItem, setActiveItem] = useState()
-  const itemWidth = 800
-  const itemGap = 64
-  const totalWidth = items?.reduce((acc, item, index) => {
-    acc = acc + item.el.clientWidth + (index === items.length - 1 ? 0 : itemGap)
-    return acc
-  }, 0)
-  // console.log({ items, totalWidth })
+  const itemsToDisplay = [...beforeGhostItems, ...orderedItemIndexArr, ...afterGhostItems]
+  // console.log(itemsToDisplay)
+  // const [items, setItems] = useState(undefined)
+  // const [activeItem, setActiveItem] = useState()
+  // const totalWidth = items?.reduce((acc, item, index) => {
+  //   acc = acc + item.el.clientWidth + (index === items.length - 1 ? 0 : itemGap)
+  //   return acc
+  // }, 0)
   const { ref, onMouseDown } = useSwipeable({
     onSwiping(e) {
-      const sign = e.deltaX > 0 ? -1 : 1
+      const sign = Math.sign(-e.deltaX)
       dispatch({
         type: 'drag',
         offset: sign * Math.min(Math.abs(e.deltaX), limit * container.clientWidth),
@@ -115,15 +113,15 @@ export function useCarousel(length, interval, options = {}) {
       onMouseDown,
       ref(container) {
         setContainer(container)
-        const newItems = [...(container?.children ? container.children : [])].map((item) => ({
-          rect: item.getBoundingClientRect(),
-          el: item,
-        }))
+        // const newItems = [...(container?.children ? container.children : [])].map((item) => ({
+        //   rect: item.getBoundingClientRect(),
+        //   el: item,
+        // }))
 
-        if (newItems?.length) {
-          setItems(newItems)
-          setActiveItem(newItems[itemsVisible])
-        }
+        // if (newItems?.length) {
+        //   setItems(newItems)
+        //   setActiveItem(newItems[itemsVisible])
+        // }
 
         return ref(container)
       },
@@ -131,60 +129,62 @@ export function useCarousel(length, interval, options = {}) {
     [state.active]
   )
 
-  const isVisible = (bounding) => {
-    return bounding.left >= 0 && bounding.right <= (container.clientWidth || document.documentElement.clientWidth)
-  }
+  // const isVisible = (bounding) => {
+  //   return bounding.left >= 0 && bounding.right <= (container.clientWidth || document.documentElement.clientWidth)
+  // }
 
   useEffect(() => {
+    console.log(state.target)
     const id = setTimeout(() => dispatch({ type: 'next', length }), interval)
     return () => clearTimeout(id)
   }, [state.offset, state.active])
 
   useEffect(() => {
-    const id = setTimeout(() => dispatch({ type: 'done' }), transitionTime)
+    const id = setTimeout(() => dispatch({ type: 'done', length }), transitionTime)
     return () => clearTimeout(id)
-  }, [state.desired])
+  }, [state.target])
+
+  const windowWidth = isInBrowser ? window.innerWidth : 0
+
+  const activePosition = -((itemWidth + itemGap) * (state.active + itemsVisible)) + windowWidth / 2 - itemWidth / 2
+  const targetPosition = -((itemWidth + itemGap) * (state.target + itemsVisible)) + windowWidth / 2 - itemWidth / 2
 
   const style = {
-    transform: 'translateX(0)',
-    width: `${totalWidth}px`,
-    left: `${-((itemWidth + itemGap) * itemsVisible) + (isInBrowser ? window.innerWidth : 0) / 2 - itemWidth / 2}px`,
+    transform: `translateX(${activePosition}px)`,
+    // width: `${totalWidth}px`,
+    // left: 0,
   }
 
-  if (state.desired !== state.active) {
-    const dist = Math.abs(state.active - state.desired)
-    const pref = Math.sign(state.offset || 0)
-    const dir = (dist > length / 2 ? 1 : -1) * Math.sign(state.desired - state.active)
-    const shift = (totalWidth * (pref || dir)) / (length + shadowSlides)
+  if (targetToActive(state.target, length) !== state.active) {
+    // const dist = Math.abs(state.active - state.target)
+    // const pref = Math.sign(state.offset || 0)
+    // const dir = (dist > length / 2 ? 1 : -1) * Math.sign(state.target - state.active)
+    // const shift = (totalWidth * (pref || dir)) / (length + itemsVisible * 2)
     style.transition = smooth
-    if (state.active === length - 1 && dir === -1) {
-      console.log(state.active, length, dir)
-      style.transform = `translateX(${(800 + itemGap) * (length + 1)}px)`
-    } else {
-      style.transform = `translateX(${(800 + itemGap) * dist * dir}px)`
-    }
+    style.transform = `translateX(${targetPosition}px)`
+    // console.log({ target: state.target, active: state.active, targetPosition })
+
+    // if (state.active === length - 1 && dir === -1) {
+    //   console.log(state.active, length, dir)
+    //   style.transform = `translateX(${(itemWidth + itemGap) * (length + 1)}px)`
+    // } else {
+    //   style.transform = `translateX(${(itemWidth + itemGap) * dist * dir}px)`
+    // }
   } else if (!isNaN(state.offset)) {
     if (state.offset !== 0) {
-      style.transform = `translateX(${-state.offset}px)`
+      style.transform = `translateX(${activePosition - state.offset}px)`
     } else {
       style.transition = elastic
     }
   }
 
-  const visibleItems = items?.filter((item) => isVisible(item.rect))
-
-  // console.log({ visibleItems })
-
-  return [itemsWithGhosts, state.desired, (n) => dispatch({ type: 'jump', desired: n }), handlers, style]
-}
-
-function makeIndices(start, delta, num) {
-  const indices = []
-
-  while (indices.length < num) {
-    indices.push(start)
-    start += delta
+  return {
+    slideIndices: itemsToDisplay,
+    active: targetToActive(state.target, length),
+    jump: (n) => dispatch({ type: 'jump', target: n }),
+    next: () => dispatch({ type: 'next' }),
+    previous: () => dispatch({ type: 'prev' }),
+    handlers,
+    style,
   }
-
-  return indices
 }

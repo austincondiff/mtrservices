@@ -73,23 +73,12 @@ const PaginationButton = styled.button`
   }
 `
 
-function makeIndices(start, delta, num) {
-  const indices = []
-
-  while (indices.length < num) {
-    indices.push(start)
-    start += delta
-  }
-
-  return indices
-}
-
 function Testimonials({ data }) {
   const { testimonials, interval = 5000 } = data
   const length = testimonials.length
   const slidesPresented = 3
   const numActive = Math.min(length, slidesPresented)
-  const [slideIndexes, active, setActive, handlers, style] = useCarousel(length, interval, {
+  const { slideIndices, active, jump, next, previous, handlers, style } = useCarousel(length, interval, {
     slidesPresented: numActive,
   })
 
@@ -97,35 +86,31 @@ function Testimonials({ data }) {
     <div>
       <TestimonialsWrap>
         <TestimonialsInside {...handlers} style={style}>
-          {slideIndexes?.map?.((index, i) => (
+          {slideIndices?.map?.((index, i) => (
             <Testimonial
-              onClick={() => setActive(index)}
+              onClick={() => jump(index)}
               key={`${index}-${i}`}
               {...testimonials[index]}
               active={index === active}
+              idx={index}
             />
           ))}
         </TestimonialsInside>
         <TestimonialControls>
           {data.directionalArrows && (
-            <DirectionalButton onClick={() => setActive(active === 0 ? testimonials.length - 1 : active - 1)}>
+            <DirectionalButton onClick={previous}>
               <Icon name="arrow-left" size="xl" />
             </DirectionalButton>
           )}
           {data.pagination && (
             <Pagination>
               {data.testimonials?.map((testimonial, index) => (
-                <PaginationButton
-                  key={index}
-                  {...testimonial}
-                  active={index === active}
-                  onClick={() => setActive(index)}
-                />
+                <PaginationButton key={index} {...testimonial} active={index === active} onClick={() => jump(index)} />
               ))}
             </Pagination>
           )}
           {data.directionalArrows && (
-            <DirectionalButton onClick={() => setActive(active === testimonials.length - 1 ? 0 : active + 1)}>
+            <DirectionalButton onClick={next}>
               <Icon name="arrow-right" size="xl" />
             </DirectionalButton>
           )}

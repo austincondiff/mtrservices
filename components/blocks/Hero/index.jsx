@@ -66,12 +66,12 @@ export function Hero({ data }) {
         {(data.primaryButtonLabel || data.secondaryButtonLabel) && (
           <StyledButtonGroup orientation={data.buttonOrientation === 'vertical' ? 'vertical' : 'horizontal'} gap="sm">
             {data.primaryButtonLabel && (
-              <Link href={data.primaryButtonUrl || '#'}>
+              <Link color="white" background="primaryGradient" href={data.primaryButtonUrl || '#'}>
                 <Button variant="contained">{data.primaryButtonLabel}</Button>
               </Link>
             )}
             {data.secondaryButtonLabel && (
-              <Link href={data.secondaryButtonUrl || '#'}>
+              <Link color="white" border="primaryGradient" href={data.secondaryButtonUrl || '#'}>
                 <Button variant={data.buttonOrientation === 'vertical' ? 'ghost' : 'outlined'}>
                   {data.secondaryButtonLabel}
                 </Button>

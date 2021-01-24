@@ -9,7 +9,7 @@ import Button from '@components/common/Button'
 export const buttonBlock = {
   Component: ({ data, index }) => (
     <BlocksControls index={index}>
-      <Link href={data.url || '#'}>
+      <Link href={data.url || '#'} target={data.newWindow && '_blank'}>
         <Button {...data}>{data.label}</Button>
       </Link>
     </BlocksControls>
