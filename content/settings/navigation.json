@@ -20,6 +20,6 @@
       "label": "Get a Quote",
       "url": "/contact?method=quote",
       "isButton": false
-    },
+    }
   ]
 }
