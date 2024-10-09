@@ -69,7 +69,7 @@
           "stackChildren": [
             {
               "_template": "paragraph",
-              "text": "At MTR Services, we are committed to giving our customers the most expert-level service possible so business operation is seamless. We understand that time is money and every moment down is another dollar lost. Our goal is to not only keep our clients and employees up and running but to create a technical landscape for our customers that fits their business objectives, not the other way around. "
+              "text": "At MTR Services, we are committed to giving our customers the most expert-level service possible so business operation is seamless. We understand that time is money and every moment down is another dollar lost. Our goal is to not only keep our clients and employees up and running but to create a technical landscape for our customers that fits their business objectives, not the other way around."
             }
           ]
         }
@@ -126,7 +126,7 @@
                 {
                   "_template": "feature",
                   "heading": "IT Consulting",
-                  "supporting_copy": "We plan, strategize, and develop network architecture and technical infrastructure. From project inception to completion, we will work side by side with management and IT staff to insure an efficient, custom solution for your technical goals.",
+                  "supporting_copy": "We plan, strategize, and develop network architecture and technical infrastructure. From project inception to completion, we will work side by side with management and IT staff to ensure an efficient, custom solution for your technical goals.",
                   "icon": "message-square"
                 },
                 {
@@ -138,7 +138,7 @@
                 {
                   "_template": "feature",
                   "heading": "Telephone Systems",
-                  "supporting_copy": "Communication is integral in any business. That is why we can provide the most reliable, top of the line IP phone systems to get you talking in no time.",
+                  "supporting_copy": "Communication is integral in any business. That is why we provide the most reliable, top-of-the-line IP phone systems to get you talking in no time.",
                   "icon": "phone"
                 }
               ]
@@ -201,9 +201,9 @@
               "stackChildren": [
                 {
                   "_template": "heading",
-                  "supertitle": "Supertitle goes here",
-                  "title": "Title goes here",
-                  "subtitle": "Subtitle goes here"
+                  "supertitle": "Your Business, Your Solution",
+                  "title": "Tailored IT Services to Help You Thrive",
+                  "subtitle": "Flexible. Personable. Scalable."
                 }
               ]
             },
@@ -219,7 +219,7 @@
               "stackChildren": [
                 {
                   "_template": "paragraph",
-                  "text": "Take root and flourish quis nostrum exercitationem ullam corporis suscipit laboriosam culture Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur descended from astronomers encyclopaedia galactica? \n\nNisi ut aliquid ex ea commodi consequatur something incredible is waiting to be known sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem "
+                  "text": "No two businesses are alike, and neither are their technology needs. At MTR Services, we believe in providing personalized solutions that fit your business’s unique challenges and objectives. Why hire a full-time IT team when you can rely on us as your trusted partner whenever you need us?"
                 }
               ]
             },
@@ -282,13 +282,13 @@
           "stackChildren": [
             {
               "_template": "heading",
-              "supertitle": "Supertitle goes here",
-              "title": "Title goes here",
-              "subtitle": "Subtitle goes here"
+              "supertitle": "Cutting-Edge IT Solutions",
+              "title": "Your Partner in Business Growth",
+              "subtitle": "Boost Productivity with MTR Services"
             },
             {
               "_template": "paragraph",
-              "text": "Take root and flourish quis nostrum exercitationem ullam corporis suscipit laboriosam culture Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur descended from astronomers encyclopaedia galactica? Nisi ut aliquid ex ea commodi consequatur something incredible is waiting to be known sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem "
+              "text": "At MTR Services, we don’t just fix problems; we provide solutions that empower your business. From proactive maintenance to custom-designed IT strategies, we are your partner in business growth."
             },
             {
               "_template": "features",
@@ -296,39 +296,21 @@
               "features": [
                 {
                   "_template": "feature",
-                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
-                  "icon": "eye",
-                  "heading": "Heading One"
+                  "heading": "Tailored IT Solutions",
+                  "supporting_copy": "We assess your current infrastructure and goals, and develop a customized IT plan that fits your business like a glove.",
+                  "icon": "eye"
                 },
                 {
                   "_template": "feature",
-                  "heading": "Heading Two",
-                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
+                  "heading": "Proactive Monitoring",
+                  "supporting_copy": "Avoid issues before they arise with 24/7 monitoring and support that keeps your systems running at peak performance.",
                   "icon": "files"
                 },
                 {
                   "_template": "feature",
-                  "heading": "Heading Three",
-                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
+                  "heading": "Seamless Communication",
+                  "supporting_copy": "We integrate top-notch IP phone systems so that you can stay connected, whether working on-site or remotely.",
                   "icon": "flag"
-                },
-                {
-                  "_template": "feature",
-                  "heading": "Heading Four",
-                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
-                  "icon": "music"
-                },
-                {
-                  "_template": "feature",
-                  "heading": "Heading Five",
-                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
-                  "icon": "server"
-                },
-                {
-                  "_template": "feature",
-                  "heading": "Heading Six",
-                  "supporting_copy": "Rich in mystery muse about vastness is bearable only through love Ut enim ad minima veniam at the edge of forever are creatures of the cosmos. ",
-                  "icon": "film"
                 }
               ]
             }
@@ -407,30 +389,6 @@
                     "avatar": "/images/clint-barton-avatar.jpg"
                   },
                   "body": "I would like to personally thank you for your outstanding product. It's incredible. It really saves me time and effort. MTR Services is exactly what our business has been lacking. I could probably go into sales for you."
-                },
-                {
-                  "_template": "testimonial",
-                  "author": {
-                    "name": "Natasha Romanoff",
-                    "avatar": "/images/natasha-romanoff-avatar.jpg"
-                  },
-                  "body": "MTR Services saved my business. I would also like to say thank you to all your staff. Thank you so much for your help."
-                },
-                {
-                  "_template": "testimonial",
-                  "author": {
-                    "name": "Thor Odinson",
-                    "avatar": "/images/thor-odinson-avatar.jpg"
-                  },
-                  "body": "MTR Services has completely surpassed our expectations. Just what I was looking for."
-                },
-                {
-                  "_template": "testimonial",
-                  "author": {
-                    "name": "Peter Quill",
-                    "avatar": "/images/peter-quill-avatar.jpg"
-                  },
-                  "body": "MTR Services has completely surpassed our expectations. Just what I was looking for."
                 }
               ],
               "directionalArrows": true,
